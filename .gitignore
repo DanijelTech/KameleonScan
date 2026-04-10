@@ -101,3 +101,42 @@ node_modules/
 
 # Ignore scan logs
 scan-logs/
+
+# Modern Python / IDE
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+*.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+*.sublime-*
+
+# Coverage
+coverage.xml
+.coverage.*
+htmlcov/
+
+# Bandit/Safety reports
+bandit-report.json
+safety-report.json
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db
