@@ -1,0 +1,39 @@
+# Ignore patterns for Docker build
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+*.eggs/
+.pytest_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Documentation builds
+doc/sphinx/_build/
+
+# Test outputs
+result/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
