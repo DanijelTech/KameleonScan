@@ -1,6 +1,6 @@
-# Contributing to w3af
+# Contributing to KameleonScan
 
-Thank you for your interest in contributing to w3af!
+Thank you for your interest in contributing to KameleonScan!
 
 ## Code of Conduct
 
@@ -50,11 +50,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # Install dev dependencies
-pip install -r w3af/tests/requirements.txt
+pip install -r KameleonScan/tests/requirements.txt
 pip install black flake8 isort mypy pylint pytest
 
 # Run tests
-pytest w3af/ -v
+pytest KameleonScan/ -v
 ```
 
 ## Code Style
@@ -66,16 +66,16 @@ pytest w3af/ -v
 
 Run formatters before committing:
 ```bash
-black w3af/
-isort w3af/
-flake8 w3af/
+black KameleonScan/
+isort KameleonScan/
+flake8 KameleonScan/
 ```
 
 ## Testing
 
 - Write tests for all new functionality
-- Run tests: `pytest w3af/ -v`
-- Run with coverage: `pytest --cov=w3af`
+- Run tests: `pytest KameleonScan/ -v`
+- Run with coverage: `pytest --cov=KameleonScan`
 - Mark slow tests: `@pytest.mark.slow`
 
 ## Commit Messages
@@ -95,4 +95,4 @@ Contributors will be recognized in:
 
 - Open an issue for bugs/features
 - Join our community forum
-- Email: info@w3af.org
+- Email: info@KameleonScan.org

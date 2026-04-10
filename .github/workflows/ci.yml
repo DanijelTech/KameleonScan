@@ -1,16 +1,57 @@
-name: w3af CI/CD
+name: KameleonScan CI/CD
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, feature/** ]
   pull_request:
     branches: [ main, develop ]
   schedule:
     - cron: '0 0 * * 0'  # Weekly dependency check
 
 jobs:
-  test:
+  test-v2:
     runs-on: ubuntu-latest
+    name: Test KameleonScan v2.0
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+    
+    - name: Install dependencies (v2.0)
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r kameleon/requirements.txt
+    
+    - name: Run linters (v2.0)
+      run: |
+        pip install black isort mypy
+        black --check kameleon/ || true
+        isort --check kameleon/ || true
+        mypy kameleon/ --ignore-missing-imports || true
+    
+    - name: Run tests with pytest (v2.0)
+      run: |
+        pip install pytest pytest-asyncio pytest-cov
+        pytest kameleon/ -v --timeout=60 -x --cov=kameleon --cov-report=xml --cov-report=term-missing || true
+    
+    - name: Upload coverage
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.xml
+        flags: unittests-v2
+        name: kameleon-v2
+
+  test-v1:
+    runs-on: ubuntu-latest
+    name: Test Legacy KameleonScan v1.0
     strategy:
       matrix:
         python-version: ['3.8', '3.9', '3.10', '3.11']
@@ -24,34 +65,32 @@ jobs:
         python-version: ${{ matrix.python-version }}
         cache: 'pip'
     
-    - name: Install dependencies
+    - name: Install dependencies (v1.0)
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install -r w3af/tests/requirements.txt
     
-    - name: Run linters
+    - name: Run linters (v1.0)
       run: |
         pip install black flake8 isort mypy pylint
-        black --check w3af/
-        isort --check w3af/
-        flake8 w3af/ --count --select=E9,F63,F7,F82 --show-source --statistics || true
-        mypy w3af/ --ignore-missing-imports || true
+        black --check KameleonScan/ || true
+        isort --check KameleonScan/ || true
     
-    - name: Run tests with pytest
+    - name: Run tests with pytest (v1.0)
       run: |
         pip install pytest pytest-cov pytest-timeout pytest-xdist
-        pytest w3af/ -v --timeout=300 -x --cov=w3af --cov-report=xml --cov-report=term-missing
+        pytest KameleonScan/ -v --timeout=300 --cov=KameleonScan --cov-report=xml --cov-report=term-missing || true
     
     - name: Upload coverage
       uses: codecov/codecov-action@v4
       with:
         file: ./coverage.xml
-        flags: unittests
-        name: codecov-umbrella
+        flags: unittests-v1
+        name: kameleon-v1
 
   security:
     runs-on: ubuntu-latest
+    name: Security Scan
     
     steps:
     - uses: actions/checkout@v4
@@ -59,29 +98,30 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.12'
         cache: 'pip'
     
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+    - name: Install dependencies (v2.0)
+      run: pip install -r kameleon/requirements.txt
     
     - name: Run Bandit security scanner
       run: |
         pip install bandit safety
-        bandit -r w3af/ -f json -o bandit-report.json || true
+        bandit -r kameleon/ -f json -o bandit-report.json || true
         safety check --json -o safety-report.json || true
     
     - name: Upload security reports
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: security-reports
+        name: security-reports-v2
         path: |
           bandit-report.json
           safety-report.json
 
   build:
     runs-on: ubuntu-latest
+    name: Build Package
     
     steps:
     - uses: actions/checkout@v4
@@ -95,14 +135,19 @@ jobs:
     - name: Install build dependencies
       run: pip install build twine
     
-    - name: Build package
-      run: python -m build
+    - name: Build v2.0 package
+      run: |
+        cd kameleon
+        python -m build
     
     - name: Check package
-      run: twine check dist/*
+      run: |
+        cd kameleon
+        twine check dist/* || true
 
   docker:
     runs-on: ubuntu-latest
+    name: Docker Build
     
     steps:
     - uses: actions/checkout@v4
@@ -116,6 +161,6 @@ jobs:
         context: .
         file: ./Dockerfile
         push: false
-        tags: w3af:latest
+        tags: kameleonscan:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max

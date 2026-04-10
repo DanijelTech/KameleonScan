@@ -1,7 +1,7 @@
 # KameleonScan v2.0 "Phoenix" - Professional Security Scanner
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/DanijelTech/KameleonScan/main/doc/sphinx/images/w3af-logo.png" alt="KameleonScan" width="200"/>
+  <img src="https://raw.githubusercontent.com/DanijelTech/KameleonScan/main/doc/sphinx/images/KameleonScan-logo.png" alt="KameleonScan" width="200"/>
 </p>
 
 [![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
@@ -9,7 +9,7 @@
 
 ## 🚀 Professional Security Scanner for 2026
 
-**KameleonScan v2.0 Phoenix** is a complete rebuild of the classic w3af scanner, designed for modern security challenges.
+**KameleonScan v2.0 Phoenix** is a complete rebuild of the classic KameleonScan scanner, designed for modern security challenges.
 
 ### Key Features
 
@@ -127,7 +127,7 @@ pip install -e .
 
 ### Comparison: v1 vs v2
 
-| Feature | v1 (w3af) | v2 (Phoenix) |
+| Feature | v1 (KameleonScan) | v2 (Phoenix) |
 |---------|-----------|--------------|
 | Architecture | Threading | Async-first |
 | HTTP | urllib3 | httpx |

@@ -1,4 +1,4 @@
-# w3af Development Guide
+# KameleonScan Development Guide
 
 ## Table of Contents
 1. [Getting Started](#getting-started)
@@ -36,7 +36,7 @@ source venv/bin/activate  # Linux/macOS
 pip install -r requirements.txt
 
 # Run tests
-pytest w3af/ -v
+pytest KameleonScan/ -v
 ```
 
 ---
@@ -45,7 +45,7 @@ pytest w3af/ -v
 
 ```
 KameleonScan/
-├── w3af/                    # Main package
+├── KameleonScan/                    # Main package
 │   ├── core/               # Core functionality
 │   │   ├── controllers/    # Scan controllers
 │   │   ├── data/          # Data structures
@@ -62,9 +62,9 @@ KameleonScan/
 ├── profiles/               # Scan profiles
 ├── scripts/                # Automation scripts
 ├── tools/                 # Utility tools
-├── w3af_console           # CLI executable
-├── w3af_gui              # GUI executable
-└── w3af_api              # API server executable
+├── KameleonScan_console           # CLI executable
+├── KameleonScan_gui              # GUI executable
+└── KameleonScan_api              # API server executable
 ```
 
 ---
@@ -75,7 +75,7 @@ KameleonScan/
 ```bash
 # Install all dependencies
 pip install -r requirements.txt
-pip install -r w3af/tests/requirements.txt
+pip install -r KameleonScan/tests/requirements.txt
 
 # Install development tools
 pip install black flake8 isort mypy pylint pytest pytest-cov
@@ -88,10 +88,10 @@ pre-commit install
 ### Docker Development
 ```bash
 # Build Docker image
-docker build -t w3af-dev .
+docker build -t KameleonScan-dev .
 
 # Run with volume mount for development
-docker run -it -v $(pwd):/app w3af-dev /bin/bash
+docker run -it -v $(pwd):/app KameleonScan-dev /bin/bash
 ```
 
 ---
@@ -100,29 +100,29 @@ docker run -it -v $(pwd):/app w3af-dev /bin/bash
 
 ### Run All Tests
 ```bash
-pytest w3af/ -v
+pytest KameleonScan/ -v
 ```
 
 ### Run Specific Test Category
 ```bash
 # Unit tests only
-pytest w3af/ -v -m unit
+pytest KameleonScan/ -v -m unit
 
 # Integration tests
-pytest w3af/ -v -m integration
+pytest KameleonScan/ -v -m integration
 
 # Skip slow tests
-pytest w3af/ -v -m "not slow"
+pytest KameleonScan/ -v -m "not slow"
 ```
 
 ### Run with Coverage
 ```bash
-pytest w3af/ --cov=w3af --cov-report=html --cov-report=term-missing
+pytest KameleonScan/ --cov=KameleonScan --cov-report=html --cov-report=term-missing
 ```
 
 ### Run Specific Test File
 ```bash
-pytest w3af/core/data/misc/tests/test_encoding.py -v
+pytest KameleonScan/core/data/misc/tests/test_encoding.py -v
 ```
 
 ---
@@ -132,22 +132,22 @@ pytest w3af/core/data/misc/tests/test_encoding.py -v
 ### Format Code
 ```bash
 # Format with Black
-black w3af/
+black KameleonScan/
 
 # Sort imports
-isort w3af/
+isort KameleonScan/
 ```
 
 ### Lint Code
 ```bash
 # Run flake8
-flake8 w3af/ --count --show-source --statistics
+flake8 KameleonScan/ --count --show-source --statistics
 
 # Run mypy type checking
-mypy w3af/ --ignore-missing-imports
+mypy KameleonScan/ --ignore-missing-imports
 
 # Run pylint
-pylint w3af/
+pylint KameleonScan/
 ```
 
 ### Pre-commit Hooks
@@ -170,7 +170,7 @@ git commit --no-verify
 Example audit plugin template
 """
 
-from w3af.core.controllers.plugins.audit_plugin import AuditPlugin
+from KameleonScan.core.controllers.plugins.audit_plugin import AuditPlugin
 
 
 class MyCustomPlugin(AuditPlugin):
@@ -197,7 +197,7 @@ class MyCustomPlugin(AuditPlugin):
     
     def get_plugin_by_name(self, plugin_name, plugin_type):
         """Get other plugins if needed."""
-        return self.w3af_core.plugins.get_plugin_by_name(plugin_name, plugin_type)
+        return self.KameleonScan_core.plugins.get_plugin_by_name(plugin_name, plugin_type)
 ```
 
 ### Plugin Types
@@ -214,7 +214,7 @@ class MyCustomPlugin(AuditPlugin):
 
 ### Starting the API Server
 ```bash
-./w3af_api
+./KameleonScan_api
 # Server starts at http://localhost:44444
 ```
 
@@ -249,19 +249,19 @@ logging.basicConfig(level=logging.DEBUG)
 ### Visual Debugging
 ```bash
 # Use the GUI with debug mode
-./w3af_gui --debug
+./KameleonScan_gui --debug
 ```
 
 ### Profiling
 ```bash
 # Profile scan performance
-python -m cProfile -o output.pstats w3af_console
+python -m cProfile -o output.pstats KameleonScan_console
 # Analyze: python -m pstats output.pstats
 ```
 
 ### Memory Profiling
 ```bash
-python -m memory_profiler w3af_console
+python -m memory_profiler KameleonScan_console
 ```
 
 ---
@@ -287,19 +287,19 @@ python -m memory_profiler w3af_console
 
 ```bash
 # Quick scan with fast_scan profile
-./w3af_console -p profiles/fast_scan
+./KameleonScan_console -p profiles/fast_scan
 
 # List all profiles
-./w3af_console -l profiles
+./KameleonScan_console -l profiles
 
 # List all plugins by type
-./w3af_console -i audit
+./KameleonScan_console -i audit
 
 # Export results to JSON
-./w3af_console -o output.json
+./KameleonScan_console -o output.json
 
 # Enable verbose output
-./w3af_console -v
+./KameleonScan_console -v
 ```
 
 ---
@@ -312,7 +312,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
 
 ## Resources
 
-- [Official Documentation](http://docs.w3af.org/)
+- [Official Documentation](http://docs.KameleonScan.org/)
 - [Wiki](https://github.com/DanijelTech/KameleonScan/wiki)
 - [Issue Tracker](https://github.com/DanijelTech/KameleonScan/issues)
 - [Discussions](https://github.com/DanijelTech/KameleonScan/discussions)

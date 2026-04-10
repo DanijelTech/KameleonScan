@@ -1,6 +1,6 @@
 # Software Bill of Materials (SBOM)
 
-This document contains the list of all third-party dependencies used in w3af.
+This document contains the list of all third-party dependencies used in KameleonScan.
 
 ## Generation
 
@@ -36,7 +36,7 @@ All dependencies are available under their respective licenses:
 - etc.
 
 ### GPL-2.0
-- w3af itself and derived works
+- KameleonScan itself and derived works
 
 ### Other
 - Some dependencies have specific licenses - check individual packages
@@ -49,6 +49,6 @@ All dependencies are available under their respective licenses:
 
 ## Version Management
 
-This SBOM corresponds to w3af version 2.0.0.
+This SBOM corresponds to KameleonScan version 2.0.0.
 
 Last updated: 2026-04-10

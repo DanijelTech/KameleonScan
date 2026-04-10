@@ -25,7 +25,7 @@ If applicable, add screenshots to help explain your problem.
 ## Environment (please complete the following information):
 - OS: [e.g. Ubuntu 22.04]
 - Python Version: [e.g. Python 3.11]
-- w3af Version: [e.g. 2.0.0]
+- KameleonScan Version: [e.g. 2.0.0]
 
 ## Additional Context
 Add any other context about the problem here.

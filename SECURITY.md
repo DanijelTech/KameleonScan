@@ -11,7 +11,7 @@ We provide security updates for the following versions:
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within w3af, please send an e-mail to security@w3af.org. All security vulnerabilities should be promptly addressed.
+If you discover a security vulnerability within KameleonScan, please send an e-mail to security@KameleonScan.org. All security vulnerabilities should be promptly addressed.
 
 Please include the following information:
 
@@ -25,7 +25,7 @@ Please include the following information:
 
 ## Security Best Practices
 
-When using w3af for security testing:
+When using KameleonScan for security testing:
 
 1. **Only test systems you own or have permission to test**
 2. **Use isolated environments** for testing when possible
