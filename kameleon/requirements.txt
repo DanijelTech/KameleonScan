@@ -1,0 +1,64 @@
+# KameleonScan v2.0 "Phoenix" Dependencies
+# =========================================
+
+# Core - Async HTTP
+httpx>=0.27.0
+aiohttp>=3.9.0
+asyncio-extras>=1.3.2
+
+# Async Database (for storage backend)
+aioredis>=2.0.1
+asyncpg>=0.29.0
+
+# Security
+cryptography>=41.0.0
+pyjwt>=2.8.0
+
+# AI/ML (optional)
+numpy>=1.24.0
+scikit-learn>=1.3.0  # For ML-based false positive reduction
+
+# Kubernetes
+kubernetes>=28.0.0
+
+# Cloud SDKs
+boto3>=1.34.0
+azure-mgmt-security>=2.1.0
+google-cloud-security>=0.1.0
+
+# DevOps / CI-CD Integration
+PyGithub>=2.1.0
+python-gitlab>=4.0.0
+
+# IDE Integration
+# (VS Code is via extension, JetBrains via plugin)
+
+# Compliance & SBOM
+cyclonedx-gomod>=0.6.0  # SBOM generation
+spdx-tools-python>=0.8.0
+
+# HTTP/API Testing
+openapi-spec-validator>=0.7.0
+grpc-reflection>=1.16.1
+
+# Storage
+redis>=5.0.0
+
+# CLI
+click>=8.1.0
+rich>=13.0.0
+typer>=0.9.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+
+# Linting
+black>=23.12.0
+mypy>=1.8.0
+ruff>=0.1.0
+
+# Documentation
+sphinx>=7.2.0
+myst-parser>=2.0.0
