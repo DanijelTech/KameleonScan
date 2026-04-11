@@ -1,7 +1,7 @@
-# w3af - Web Application Attack and Audit Framework
+# KameleonScan - Web Application Security Scanner
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/andresriancho/w3af/master/doc/sphinx/images/w3af-logo.png" alt="w3af logo" width="200"/>
+  <img src="doc/sphinx/images/w3af-logo.png" alt="KameleonScan logo" width="200"/>
 </p>
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
