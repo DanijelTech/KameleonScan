@@ -51,13 +51,13 @@ pip install -r requirements.txt
 
 ```bash
 # Command-line interface
-./w3af_console
+./kameleon_console
 
 # Graphical User Interface
-./w3af_gui
+./kameleon_gui
 
 # REST API server
-./w3af_api
+./kameleon_api
 ```
 
 ### Using Docker
@@ -67,7 +67,7 @@ pip install -r requirements.txt
 docker build -t kameleonscan .
 
 # Run the container
-docker run -it kameleonscan ./w3af_console
+docker run -it kameleonscan ./kameleon_console
 ```
 
 ## Features
@@ -94,21 +94,21 @@ For detailed documentation, visit:
 ```bash
 # Install development dependencies
 pip install -r requirements.txt
-pip install -r w3af/tests/requirements.txt
+pip install -r kameleon/tests/requirements.txt
 pip install black flake8 isort mypy pylint pytest
 
 # Run tests
-pytest w3af/ -v
+pytest kameleon/ -v
 
 # Code formatting
-black w3af/
-isort w3af/
+black kameleon/
+isort kameleon/
 
 # Type checking
-mypy w3af/ --ignore-missing-imports
+mypy kameleon/ --ignore-missing-imports
 
 # Linting
-pylint w3af/
+pylint kameleon/
 ```
 
 ### CI/CD
