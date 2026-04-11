@@ -66,7 +66,7 @@ def _percent_encode(encodingexc):
     en = encodingexc.end
 
     return (
-        u'%s' % (urllib.quote(encodingexc.object[st:en].encode('utf8')),),
+        '%s' % (urllib.quote(encodingexc.object[st:en].encode('utf8')),),
         en
     )
 

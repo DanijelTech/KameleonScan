@@ -70,7 +70,7 @@ class Custom:
 
                 output = NULL
 
-        except SqlmapNoneDataException, ex:
+        except SqlmapNoneDataException as ex:
             logger.warn(ex)
 
         return output
@@ -86,7 +86,7 @@ class Custom:
             query = None
 
             try:
-                query = raw_input("sql-shell> ")
+                query = input("sql-shell> ")
                 query = getUnicode(query, encoding=sys.stdin.encoding)
             except KeyboardInterrupt:
                 print

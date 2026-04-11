@@ -101,7 +101,7 @@ class SSLSocket(object):
 
             try:
                 self.shutdown()
-            except OpenSSL.SSL.Error, ssl_error:
+            except OpenSSL.SSL.Error as ssl_error:
                 message = str(ssl_error)
                 if not message:
                     # We get here when the remote end already closed the
@@ -240,7 +240,7 @@ def wrap_socket(sock, keyfile=None, certfile=None, server_side=False,
     if ca_certs:
         try:
             ctx.load_verify_locations(ca_certs, None)
-        except OpenSSL.SSL.Error, e:
+        except OpenSSL.SSL.Error as e:
             raise ssl.SSLError('Bad ca_certs: %r' % ca_certs, e)
 
     cnx = OpenSSL.SSL.Connection(ctx, sock)

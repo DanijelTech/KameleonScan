@@ -197,7 +197,7 @@ class SQLMapWrapper(object):
                                        shell=False,
                                        universal_newlines=True,
                                        cwd=cwd)
-        except OSError, os_err:
+        except OSError as os_err:
             # https://github.com/andresriancho/w3af/issues/10186
             # OSError: [Errno 12] Cannot allocate memory
             if os_err.errno == errno.ENOMEM:

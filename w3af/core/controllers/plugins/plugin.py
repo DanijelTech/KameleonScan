@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 """
 import sys
-import Queue
+import queue
 import threading
 
 from itertools import repeat
@@ -323,7 +323,7 @@ class UrlOpenerProxy(object):
         def url_opener_proxy(*args, **kwargs):
             try:
                 return attr(*args, **kwargs)
-            except HTTPRequestException, hre:
+            except HTTPRequestException as hre:
                 #
                 # We get here when **one** HTTP request fails. When more than
                 # one exception fails the URL opener will raise a different
@@ -344,7 +344,7 @@ class UrlOpenerProxy(object):
                 # response and hope for the best.
                 if re_raise:
                     exc_info = sys.exc_info()
-                    raise exc_info[0], exc_info[1], exc_info[2]
+                    raise exc_info[0](exc_info[1]).with_traceback(exc_info[2])
 
                 return result
 

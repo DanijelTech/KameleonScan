@@ -77,7 +77,8 @@ class blind_sqli(AuditPlugin):
                                       iterable=test_iterator,
                                       callback=lambda x, y: None)
 
-    def _find_response_diff_sql(self, (bsqli_resp_diff, mutant, statement_type)):
+    def _find_response_diff_sql(self, args):
+        bsqli_resp_diff, mutant, statement_type = args
         """
         :param bsqli_resp_diff: The logic used to find blind sql injections
         :param mutant: The mutant object that I have to inject to
@@ -191,13 +192,14 @@ class blind_sqli(AuditPlugin):
             for delay_obj in bsqli_time_delay.get_delays():
                 yield bsqli_time_delay, mutant, delay_obj
 
-    def _find_time_delay_sql(self, (bsqli_time_delay, mutant, delay_obj)):
+    def _find_time_delay_sql(self, args):
         """
         :param bsqli_time_delay: The logic used to find blind sql injections
         :param mutant: The mutant object that I have to inject to
         :param delay_obj: The exact delay object
         :return: A vulnerability or None
         """
+        bsqli_time_delay, mutant, delay_obj = args
         #
         # These tests were already made in _generate_delay_tests() but
         # between the mutant generation and the time it is about to be sent the

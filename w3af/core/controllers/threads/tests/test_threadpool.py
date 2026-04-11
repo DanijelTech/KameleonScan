@@ -48,7 +48,7 @@ class TestWorkerPool(unittest.TestCase):
 
         try:
             [i for i in answers]
-        except TypeError, te:
+        except TypeError as te:
             self.assertEqual(str(te), '1 Boom!')
             # pylint: disable=E1101
             self.assertIn("raise TypeError('%s Boom!' % foo)", te.original_traceback_string)

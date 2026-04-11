@@ -105,7 +105,7 @@ class Form(KeyValueContainer):
         return self.form_params.get_action()
 
     def iteritems(self):
-        for k, v in self.form_params.iteritems():
+        for k, v in self.form_params.items():
             yield k, v
 
     def items(self):
@@ -115,7 +115,7 @@ class Form(KeyValueContainer):
         return self.form_params.keys()
 
     def iterkeys(self):
-        for k in self.form_params.iterkeys():
+        for k in self.form_params.keys():
             yield k
 
     def update(self, *args, **kwargs):

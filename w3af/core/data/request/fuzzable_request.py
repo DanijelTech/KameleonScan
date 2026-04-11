@@ -127,7 +127,7 @@ class FuzzableRequest(RequestMixIn, DiskItem):
         return state
 
     def __setstate__(self, state):
-        [setattr(self, k, v) for k, v in state.iteritems()]
+        [setattr(self, k, v) for k, v in state.items()]
 
     def get_default_headers(self):
         """
@@ -330,8 +330,8 @@ class FuzzableRequest(RequestMixIn, DiskItem):
         """
         :return: A string representation of this fuzzable request.
         """
-        short_fmt = u'Method: %s | %s'
-        long_fmt = u'Method: %s | %s | %s: (%s)'
+        short_fmt = 'Method: %s | %s'
+        long_fmt = 'Method: %s | %s | %s: (%s)'
 
         if self.get_raw_data():
             parameters = self.get_raw_data().get_param_names()
@@ -343,7 +343,7 @@ class FuzzableRequest(RequestMixIn, DiskItem):
         if not parameters:
             output = short_fmt % (self.get_method(), self.get_url())
         else:
-            jparams = u', '.join(parameters)
+            jparams = ', '.join(parameters)
             output = long_fmt % (self.get_method(), self.get_url(),
                                  dc_type, jparams)
 

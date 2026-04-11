@@ -55,10 +55,10 @@ class TestXPATH(PluginTest):
         self.assertTrue(all_titles, vulns)
 
         # Verify the specifics about the vulnerabilities
-        expected = [(u'xpath-attr-double.py', 'text'),
-                    (u'xpath-attr-tag.py', 'text'),
-                    (u'xpath-attr-or.py', 'text'),
-                    (u'xpath-attr-single.py', 'text')]
+        expected = [('xpath-attr-double.py', 'text'),
+                    ('xpath-attr-tag.py', 'text'),
+                    ('xpath-attr-or.py', 'text'),
+                    ('xpath-attr-single.py', 'text')]
 
         found = [(v.get_url().get_file_name(),
                   v.get_mutant().get_token_name()) for v in vulns]

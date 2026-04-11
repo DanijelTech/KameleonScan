@@ -145,13 +145,14 @@ class dir_file_bruter(CrawlPlugin):
 
             try:
                 new_url = base_path.url_join(line)
-            except ValueError, ve:
+            except ValueError as ve:
                 msg = 'The "%s" line at "%s" generated an invalid URL: %s'
                 om.out.debug(msg % (line, file_name, ve))
             else:
                 yield line, new_url
 
-    def _send_and_check(self, base_path, (file_or_path, new_url)):
+    def _send_and_check(self, base_path, args):
+        file_or_path, new_url = args
         """
         Performs a GET and verifies that the response is not a 404.
 

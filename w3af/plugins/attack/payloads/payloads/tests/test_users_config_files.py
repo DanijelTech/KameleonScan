@@ -24,7 +24,7 @@ from w3af.plugins.attack.payloads.payload_handler import exec_payload
 
 class TestUsersConfigFiles(PayloadTestHelper):
 
-    EXPECTED_RESULT = {u'/root/.profile', u'/root/.bashrc'}
+    EXPECTED_RESULT = {'/root/.profile', '/root/.bashrc'}
 
     def test_users_config_files(self):
         result = exec_payload(self.shell, 'users_config_files', use_api=True)

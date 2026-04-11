@@ -306,7 +306,7 @@ class httpLogTab(RememberingHPaned):
         self._searchText.set_text("")
         try:
             self.find_request_response()
-        except BaseFrameworkException, w3:
+        except BaseFrameworkException as w3:
             self._empty_results()
         return
 
@@ -385,7 +385,7 @@ class httpLogTab(RememberingHPaned):
             # Please see the 5000 below
             searchResultObjects = self._historyItem.find(search_data,
                                                          result_limit=5001, order_data=[("id", "")])
-        except BaseFrameworkException, w3:
+        except BaseFrameworkException as w3:
             self._empty_results()
             return
         if len(searchResultObjects) == 0:
@@ -478,7 +478,7 @@ class httpLogTab(RememberingHPaned):
             # from disk and if they aren't there an exception will rise
             history_item.request
             history_item.response
-        except IOError, ioe:
+        except IOError as ioe:
             self._show_message(_('Error'), str(ioe))
             return
 

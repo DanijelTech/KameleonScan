@@ -82,7 +82,7 @@ class TestQueryString(unittest.TestCase):
         self.assertEqual(dc.get_token().get_name(), 'a')
 
     def test_encoding_special_unicode(self):
-        qs = QueryString([('a', [u'✓'])])
+        qs = QueryString([('a', ['✓'])])
         qs.set_token(('a', 0))
 
         self.assertEqual(str(qs), 'a=%E2%9C%93')
@@ -91,7 +91,7 @@ class TestQueryString(unittest.TestCase):
         qs_1 = QueryString([('a', ['1'])])
         qs_2 = QueryString([('b', ['2'])])
 
-        for key, values in qs_2.iteritems():
+        for key, values in qs_2.items():
             qs_1[key] = values
 
         self.assertEqual(qs_1['b'], ['2'])

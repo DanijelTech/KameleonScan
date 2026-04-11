@@ -210,14 +210,14 @@ class CoreTarget(Configurable):
         if os.lower() in self._operating_systems:
             cf.cf.save('target_os', os.lower())
         else:
-            msg = u'Unknown target operating system: "%s"'
+            msg = 'Unknown target operating system: "%s"'
             raise BaseFrameworkException(msg % os)
 
         pf = options_list['target_framework'].get_value_str()
         if pf.lower() in self._programming_frameworks:
             cf.cf.save('target_framework', pf.lower())
         else:
-            msg = u'Unknown target programming framework: "%s"'
+            msg = 'Unknown target programming framework: "%s"'
             raise BaseFrameworkException(msg % pf)
 
     def get_name(self):

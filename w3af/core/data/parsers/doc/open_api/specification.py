@@ -146,7 +146,7 @@ class SpecificationHandler(object):
             self.spec = RelaxedSpec.from_dict(spec_dict,
                                               origin_url=url_string,
                                               config=config)
-        except Exception, e:
+        except Exception as e:
             msg = ('The document at "%s" is not a valid Open API specification.'
                    ' The following exception was raised while parsing the dict'
                    ' into a specification object: "%s"')

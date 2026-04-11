@@ -179,7 +179,8 @@ class os_commanding(AuditPlugin):
             for delay_obj in self._get_wait_commands():
                 yield mutant, delay_obj, debugging_id
 
-    def _find_delay_in_mutant(self, (mutant, delay_obj, debugging_id)):
+    def _find_delay_in_mutant(self, args):
+        mutant, delay_obj, debugging_id = args
         """
         Try to delay the response and save a vulnerability if successful
 
@@ -211,7 +212,7 @@ class os_commanding(AuditPlugin):
     def _get_echo_commands(self):
         """
         :return: This method returns a list of commands to try to execute in
-                 order to print the content of a known file.
+                 order to print(the) content of a known file.
         """
         commands = []
         for special_char in self._special_chars:
@@ -286,7 +287,7 @@ class os_commanding(AuditPlugin):
         (ping -c 5 localhost).
 
         When using the second technique, the plugin sends specially crafted
-        requests that, if the vulnerability is present, will print the content
+        requests that, if the vulnerability is present, will print(the) content
         of a known file (i.e. /etc/passwd) to the HTML output
 
         This plugin has a rather long list of command separators, like ";" and

@@ -64,7 +64,7 @@ def print_status(start_time, done_list, total_tests, queued_run_ids, executor,
                  exit_codes):
 
     if len(exit_codes) == 0:
-        msg = u'Status: (%s/%s) ' % (len(done_list), total_tests)
+        msg = 'Status: (%s/%s) ' % (len(done_list), total_tests)
     else:
         exit_codes = list(set(exit_codes))
         will_fail = False
@@ -78,9 +78,9 @@ def print_status(start_time, done_list, total_tests, queued_run_ids, executor,
             will_fail = True
 
         if not will_fail:
-            msg = u'Status: (%s/%s) ✓ ' % (len(done_list), total_tests)
+            msg = 'Status: (%s/%s) ✓ ' % (len(done_list), total_tests)
         else:
-            msg = u'Status: (%s/%s) ✗ ' % (len(done_list), total_tests)
+            msg = 'Status: (%s/%s) ✗ ' % (len(done_list), total_tests)
 
     logging.warning(msg)
 

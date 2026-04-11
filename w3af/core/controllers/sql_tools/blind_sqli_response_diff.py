@@ -42,7 +42,7 @@ class BlindSqliResponseDiff(object):
     """
 
     SPECIAL_CHARS = '"\'=()'
-    SYNTAX_ERROR = u"a'b\"c'd\""
+    SYNTAX_ERROR = "a'b\"c'd\""
     CONFIRMATION_ROUNDS = 3
 
     NUMERIC = 'numeric'

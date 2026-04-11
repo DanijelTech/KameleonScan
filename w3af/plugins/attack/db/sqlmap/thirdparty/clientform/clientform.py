@@ -66,10 +66,7 @@ __all__ = ['AmbiguityError', 'CheckboxControl', 'Control',
            'SubmitButtonControl', 'SubmitControl', 'TextControl',
            'TextareaControl', 'XHTMLCompatibleFormParser']
 
-try: True
-except NameError:
-    True = 1
-    False = 0
+# Python 3 has True and False built-in
 
 try: bool
 except NameError:
@@ -290,7 +287,7 @@ def isstringlike(x):
 def choose_boundary():
     """Return a string usable as a multipart boundary."""
     # follow IE and firefox
-    nonce = "".join([str(random.randint(0, sys.maxint-1)) for i in 0,1,2])
+    nonce = "".join([str(random.randint(0, sys.maxsize-1)) for i in [0,1,2]])
     return "-"*27 + nonce
 
 # This cut-n-pasted MimeWriter from standard library is here so can add
@@ -792,7 +789,7 @@ else:
         def feed(self, data):
             try:
                 HTMLParser.HTMLParser.feed(self, data)
-            except HTMLParser.HTMLParseError, exc:
+            except HTMLParser.HTMLParseError as exc:
                 raise ParseError(exc)
 
         def start_option(self, attrs):
@@ -870,7 +867,7 @@ class FormParser(_AbstractSgmllibParser, sgmllib.SGMLParser):
     def feed(self, data):
         try:
             sgmllib.SGMLParser.feed(self, data)
-        except SGMLLIB_PARSEERROR, exc:
+        except SGMLLIB_PARSEERROR as exc:
             raise ParseError(exc)
 
     def close(self):
@@ -896,7 +893,7 @@ def _create_bs_classes(bs,
         def feed(self, data):
             try:
                 self.bs_base_class.feed(self, data)
-            except SGMLLIB_PARSEERROR, exc:
+            except SGMLLIB_PARSEERROR as exc:
                 raise ParseError(exc)
         def close(self):
             self.bs_base_class.close(self)
@@ -1100,7 +1097,7 @@ def _ParseFileEx(file, base_uri,
         data = file.read(CHUNK)
         try:
             fp.feed(data)
-        except ParseError, e:
+        except ParseError as e:
             e.base_uri = base_uri
             raise
         if len(data) != CHUNK: break
@@ -1141,7 +1138,7 @@ def _ParseFileEx(file, base_uri,
     for form in forms:
         try:
             form.fixup()
-        except AttributeError, ex:
+        except AttributeError as ex:
             if not any(_ in str(ex) for _ in ("is disabled", "is readonly")):
                 raise
     return forms
@@ -2902,7 +2899,7 @@ class HTMLForm:
         control = self.find_control(name)
         try:
             control.value = value
-        except AttributeError, e:
+        except AttributeError as e:
             raise ValueError(str(e))
 
     def get_value(self,

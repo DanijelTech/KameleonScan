@@ -77,9 +77,9 @@ class BaseParser(object):
         more info on urlencoding.
 
         So, when _decode_url() is called and take as input
-        u'http://host.tld/%05%44', it is encoded using the instance's _encoding
+        'http://host.tld/%05%44', it is encoded using the instance's _encoding
         then it is applied the unquote routine and finally is decoded back to
-        unicode being u'http://host.tld/é' the final result.
+        unicode being 'http://host.tld/é' the final result.
 
         Something small to remember:
         >>> urllib.unquote('ind%c3%a9x.html').decode('utf-8').encode('utf-8') \

@@ -32,7 +32,7 @@ class TestNTLMHandler(unittest.TestCase):
     @attr('ci_fails')
     def test_auth_valid_creds(self):
         url = "http://moth/w3af/core/ntlm_auth/ntlm_v1/"
-        user = u'moth\\admin'
+        user = 'moth\\admin'
         password = 'admin'
     
         passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
@@ -48,7 +48,7 @@ class TestNTLMHandler(unittest.TestCase):
     
     def test_auth_invalid_creds(self):
         url = "http://moth/w3af/core/ntlm_auth/ntlm_v1/"
-        user = u'moth\\invalid'
+        user = 'moth\\invalid'
         password = 'invalid'
     
         passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
@@ -63,7 +63,7 @@ class TestNTLMHandler(unittest.TestCase):
 
     def test_auth_invalid_proto(self):
         url = "http://moth/w3af/core/ntlm_auth/ntlm_v2/"
-        user = u'moth\\admin'
+        user = 'moth\\admin'
         password = 'admin'
     
         passman = urllib2.HTTPPasswordMgrWithDefaultRealm()

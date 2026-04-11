@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 import threading
 import unittest
 import urllib2
-import Queue
+import queue
 import time
 
 from nose.plugins.attrib import attr
@@ -79,7 +79,7 @@ class TestInterceptProxy(unittest.TestCase):
         def send_request(proxy_opener, result_queue):
             try:
                 proxy_opener.open(get_moth_http())
-            except urllib2.HTTPError, he:
+            except urllib2.HTTPError as he:
                 # Catch the 403 from the local proxy when the user
                 # drops the HTTP request.
                 result_queue.put(he)
@@ -108,7 +108,7 @@ class TestInterceptProxy(unittest.TestCase):
         def send_request(proxy_opener, result_queue):
             try:
                 response = proxy_opener.open(get_moth_http())
-            except urllib2.HTTPError, he:
+            except urllib2.HTTPError as he:
                 # Catch the 403 from the local proxy when the user
                 # drops the HTTP request.
                 result_queue.put(he)
@@ -143,13 +143,13 @@ class TestInterceptProxy(unittest.TestCase):
 
             try:
                 response = proxy_opener.open(url, timeout=10)
-            except urllib2.HTTPError, he:
+            except urllib2.HTTPError as he:
                 # Catch the 403 from the local proxy when the user
                 # drops the HTTP request.
                 results.put(he)
-            except KeyboardInterrupt, k:
+            except KeyboardInterrupt as k:
                 exceptions.put(k)
-            except Exception, e:
+            except Exception as e:
                 exceptions.put(e)
             else:
                 results.put(response)

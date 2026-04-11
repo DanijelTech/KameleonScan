@@ -143,7 +143,7 @@ if py3k:
     from collections import MutableMapping as DictMixin
     import pickle
     from io import BytesIO
-    from configparser import ConfigParser, Error as ConfigParserError
+    from configparser import configparser, Error as ConfigParserError
     basestring = str
     unicode = str
     json_loads = lambda s: json_lds(touni(s))
@@ -155,13 +155,13 @@ if py3k:
 else:  # 2.x
     import httplib
     import thread
-    from urlparse import urljoin, SplitResult as UrlSplitResult
+    from urllib.parse import urljoin, SplitResult as UrlSplitResult
     from urllib import urlencode, quote as urlquote, unquote as urlunquote
     from Cookie import SimpleCookie
     from itertools import imap
     import cPickle as pickle
     from StringIO import StringIO as BytesIO
-    from ConfigParser import SafeConfigParser as ConfigParser, \
+    from configparser import SafeConfigParser as ConfigParser, \
                              Error as ConfigParserError
     if py25:
         msg = "Python 2.5 support may be dropped in future versions of Bottle."
@@ -2015,19 +2015,19 @@ class MultiDict(DictMixin):
             return [(k, v[-1]) for k, v in self.dict.items()]
 
         def iterkeys(self):
-            return self.dict.iterkeys()
+            return self.dict.keys()
 
         def itervalues(self):
-            return (v[-1] for v in self.dict.itervalues())
+            return (v[-1] for v in self.dict.values())
 
         def iteritems(self):
-            return ((k, v[-1]) for k, v in self.dict.iteritems())
+            return ((k, v[-1]) for k, v in self.dict.items())
 
         def iterallitems(self):
-            return ((k, v) for k, vl in self.dict.iteritems() for v in vl)
+            return ((k, v) for k, vl in self.dict.items() for v in vl)
 
         def allitems(self):
-            return [(k, v) for k, vl in self.dict.iteritems() for v in vl]
+            return [(k, v) for k, vl in self.dict.items() for v in vl]
 
     def get(self, key, default=None, index=-1, type=None):
         """ Return the most recent value for a key.

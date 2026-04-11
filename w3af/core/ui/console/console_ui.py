@@ -121,9 +121,9 @@ class ConsoleUI(object):
         QUESTION = 'Do you accept the terms and conditions? [N|y] '
         msg = DISCLAIMER + '\n\n' + QUESTION
         try:
-            user_response = raw_input(msg)
+            user_response = input(msg)
         except (KeyboardInterrupt, EOFError):
-            print ''
+            print('')
             user_response = ''
 
         user_response = user_response.lower()
@@ -161,7 +161,7 @@ class ConsoleUI(object):
                 try:
                     c = term.getch()
                     self._handleKey(c)
-                except Exception, e:
+                except Exception as e:
                     om.out.console(str(e))
 
             term.set_raw_input_mode(False)
@@ -230,7 +230,7 @@ class ConsoleUI(object):
                 self._handlers[key]()
             else:
                 self._paste(key)
-        except Exception, e:
+        except Exception as e:
             # TODO
             traceback.print_exc()
 
@@ -290,7 +290,7 @@ class ConsoleUI(object):
                 menu = None
                 self.exit()
 
-            except BaseFrameworkException, e:
+            except BaseFrameworkException as e:
                 menu = None
                 om.out.console(e.value)
 
@@ -444,7 +444,7 @@ class ConsoleUI(object):
 
         try:
             result = shlex.split(line)
-        except ValueError, ve:
+        except ValueError as ve:
             term.write(str(ve) + '\n')
             return []
         else:

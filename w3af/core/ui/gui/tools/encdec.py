@@ -38,7 +38,7 @@ class SimpleTextView(gtk.TextView):
     def __init__(self):
         gtk.TextView.__init__(self)
         self.buffer = self.get_buffer()
-        self.buffer.set_text(u"")
+        self.buffer.set_text("")
 
     def clear(self):
         """Clears the pane."""
@@ -160,7 +160,7 @@ class EncodeDecode(entries.RememberingWindow):
         :param func: the processing function.
         """
         # clear the output text, this will introduce a small blink
-        out.set_text(u"")
+        out.set_text("")
         # go busy
         busy = gtk.gdk.Window(self.window, gtk.gdk.screen_width(),
                               gtk.gdk.screen_height(), gtk.gdk.WINDOW_CHILD,
@@ -222,7 +222,7 @@ class ThreadedProc(threading.Thread):
         try:
             self.result = self.func(self.text)
             self.ok = True
-        except Exception, e:
+        except Exception as e:
             self.exception = e
             self.ok = False
         finally:
@@ -352,7 +352,7 @@ def html_unescape(t):
     """Decoder doing HTML unescaping.
 
     >>> encode_decode.htmldecode('&lt;script&gt;')
-    u'<script>'
+    '<script>'
     >>>
     """
     return encode_decode.htmldecode(t)

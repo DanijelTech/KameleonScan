@@ -89,9 +89,9 @@ class TestAnalyzeCookies(unittest.TestCase):
         cookie_infosets = kb.kb.get('analyze_cookies', 'cookies')
         self.assertEqual(len(cookie_infosets), 1)
 
-        expected_desc = u'The application sent the "abc" cookie in 1 ' \
-                        u'different URLs. The first ten URLs are:\n' \
-                        u' - http://www.w3af.com/\n'
+        expected_desc = 'The application sent the "abc" cookie in 1 ' \
+                        'different URLs. The first ten URLs are:\n' \
+                        ' - http://www.w3af.com/\n'
         info_set = cookie_infosets[0]
         self.assertEqual(len(info_set.infos), 1)
         self.assertEqual(info_set.get_desc(), expected_desc)
@@ -115,9 +115,9 @@ class TestAnalyzeCookies(unittest.TestCase):
         cookie_infosets = kb.kb.get('analyze_cookies', 'cookies')
         self.assertEqual(len(cookie_infosets), 1)
 
-        expected_desc = u'The application sent the "abc" cookie in 2' \
-                        u' different URLs. The first ten URLs are:\n' \
-                        u' - http://www.w3af.com/2\n - http://www.w3af.com/1\n'
+        expected_desc = 'The application sent the "abc" cookie in 2' \
+                        ' different URLs. The first ten URLs are:\n' \
+                        ' - http://www.w3af.com/2\n - http://www.w3af.com/1\n'
         info_set = cookie_infosets[0]
         self.assertEqual(len(info_set.infos), 2)
         self.assertEqual(info_set.get_desc(), expected_desc)
@@ -229,13 +229,13 @@ class TestAnalyzeCookies(unittest.TestCase):
         self.assertEqual(len(kb.kb.get('analyze_cookies', 'invalid-cookies')), 0)
 
         info_set = http_only[0]
-        expected_desc = u'The application sent the "abc" cookie without the' \
-                        u' HttpOnly flag in 2 different responses. The' \
-                        u' HttpOnly flag prevents potential intruders from' \
-                        u' accessing the cookie value through Cross-Site' \
-                        u' Scripting attacks. The first ten URLs which sent' \
-                        u' the insecure cookie are:\n' \
-                        u' - http://www.w3af.com/2\n - http://www.w3af.com/1\n'
+        expected_desc = 'The application sent the "abc" cookie without the' \
+                        ' HttpOnly flag in 2 different responses. The' \
+                        ' HttpOnly flag prevents potential intruders from' \
+                        ' accessing the cookie value through Cross-Site' \
+                        ' Scripting attacks. The first ten URLs which sent' \
+                        ' the insecure cookie are:\n' \
+                        ' - http://www.w3af.com/2\n - http://www.w3af.com/1\n'
         self.assertEqual(info_set.get_desc(), expected_desc)
         self.assertEqual(info_set.get_id(), [1, 2])
         self.assertEqual(len(info_set.infos), 2)
@@ -343,13 +343,13 @@ class TestAnalyzeCookies(unittest.TestCase):
         self.assertEqual(len(secure_info_sets), 1)
 
         info_set = secure_info_sets[0]
-        expected_desc = u'The application sent the "abc" cookie without the' \
-                        u' Secure flag set in 1 different URLs. The Secure ' \
-                        u'flag prevents the browser from sending cookies ' \
-                        u'over insecure HTTP connections, thus preventing' \
-                        u' potential session hijacking attacks. The first' \
-                        u' ten URLs which sent the insecure cookie are:\n' \
-                        u' - https://www.w3af.com/\n'
+        expected_desc = 'The application sent the "abc" cookie without the' \
+                        ' Secure flag set in 1 different URLs. The Secure ' \
+                        'flag prevents the browser from sending cookies ' \
+                        'over insecure HTTP connections, thus preventing' \
+                        ' potential session hijacking attacks. The first' \
+                        ' ten URLs which sent the insecure cookie are:\n' \
+                        ' - https://www.w3af.com/\n'
         self.assertEqual(len(info_set.infos), 1)
         self.assertEqual(info_set.get_id(), [1])
         self.assertEqual(info_set.get_desc(), expected_desc)

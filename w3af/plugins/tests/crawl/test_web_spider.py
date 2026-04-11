@@ -90,18 +90,18 @@ class TestWebSpider(PluginTest):
 
     def test_utf8_urls(self):
         config = self._run_configs['basic']
-        expected_files = [u'vúlnerable.py',
-                          u'é.py',
-                          u'改.py',
-                          u'проверка.py']
+        expected_files = ['vúlnerable.py',
+                          'é.py',
+                          '改.py',
+                          'проверка.py']
         start_url = self.encoding_url + '_utf8/'
 
         self.generic_scan(config, start_url, start_url, expected_files)
 
     def test_euc_jp_urls(self):
         config = self._run_configs['basic']
-        expected_files = [u'raw-qs-jp.py',
-                          u'qs-jp.py']
+        expected_files = ['raw-qs-jp.py',
+                          'qs-jp.py']
         start_url = self.encoding_url + '_euc-jp/'
 
         self.generic_scan(config, start_url, start_url, expected_files)

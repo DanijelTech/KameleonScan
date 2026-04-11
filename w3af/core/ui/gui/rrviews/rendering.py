@@ -120,14 +120,14 @@ class GtkHtmlRenderingView(RenderingView):
             document.write_stream(obj.get_body())
             document.close_stream()
             self._renderingWidget.set_document(document)
-        except ValueError, ve:
+        except ValueError as ve:
             # I get here when the mime type is an image or something that I
             # can't display
             pass
-        except Exception, e:
-            print _('gtkhtml2 exception:'), type(e), str(e)
-            print _('Please report this issue here:')
-            print 'https://github.com/andresriancho/w3af/issues/new'
+        except Exception as e:
+            print(_('gtkhtml2 exception:'), type(e), str(e))
+            print(_('Please report this issue here:'))
+            print('https://github.com/andresriancho/w3af/issues/new')
 
     def clear(self):
         """Clear view."""

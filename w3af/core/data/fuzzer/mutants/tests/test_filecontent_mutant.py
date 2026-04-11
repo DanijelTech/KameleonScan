@@ -64,9 +64,9 @@ class TestFileContentMutant(unittest.TestCase):
         m = self.create_simple_filecontent_mutant(MultipartContainer)
         self.assertEqual(m.get_url().url_string, 'http://moth/')
 
-        expected_found_at = u'"http://moth/", using HTTP method POST. The'\
-            u' sent post-data was: "...file=abc..."'\
-            u' which modified the uploaded file content.'
+        expected_found_at = '"http://moth/", using HTTP method POST. The'\
+            ' sent post-data was: "...file=abc..."'\
+            ' which modified the uploaded file content.'
         generated_found_at = m.found_at()
 
         self.assertEqual(generated_found_at, expected_found_at)

@@ -198,7 +198,7 @@ class lfi(AuditPlugin):
         # the token value is a binary string which can't be converted to unicode.
         # This happens, for example, when trying to upload JPG files to a multipart form
         #
-        # >>> u'' in '\x80'
+        # >>> '' in '\x80'
         # ...
         # UnicodeDecodeError: 'ascii' codec can't decode byte 0x80 in position 0: ordinal not in range(128)
         #

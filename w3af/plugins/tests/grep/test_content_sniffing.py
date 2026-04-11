@@ -65,10 +65,10 @@ class TestContentSniffingSecurity(unittest.TestCase):
         self.assertEquals(len(findings), 1, findings)
 
         info_set = findings[0]
-        expected_desc = u'The remote web application sent 1 HTTP responses' \
-                        u' which do not contain the X-Content-Type-Options' \
-                        u' header. The first ten URLs which did not send the' \
-                        u' header are:\n - https://www.w3af.com/\n'
+        expected_desc = 'The remote web application sent 1 HTTP responses' \
+                        ' which do not contain the X-Content-Type-Options' \
+                        ' header. The first ten URLs which did not send the' \
+                        ' header are:\n - https://www.w3af.com/\n'
 
         self.assertEqual(info_set.get_id(), [1])
         self.assertEqual(info_set.get_desc(), expected_desc)
@@ -97,11 +97,11 @@ class TestContentSniffingSecurity(unittest.TestCase):
         self.assertEquals(len(findings), 1, findings)
 
         info_set = findings[0]
-        expected_desc = u'The remote web application sent 2 HTTP responses' \
-                        u' which do not contain the X-Content-Type-Options' \
-                        u' header. The first ten URLs which did not send the' \
-                        u' header are:\n - https://www.w3af.com/1\n' \
-                        u' - https://www.w3af.com/2\n'
+        expected_desc = 'The remote web application sent 2 HTTP responses' \
+                        ' which do not contain the X-Content-Type-Options' \
+                        ' header. The first ten URLs which did not send the' \
+                        ' header are:\n - https://www.w3af.com/1\n' \
+                        ' - https://www.w3af.com/2\n'
 
         self.assertEqual(info_set.get_id(), [1, 2])
         self.assertEqual(info_set.get_desc(), expected_desc)

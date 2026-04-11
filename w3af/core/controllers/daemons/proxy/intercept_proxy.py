@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 """
 import re
-import Queue
+import queue
 
 from w3af.core.controllers.daemons.proxy import Proxy
 from w3af.core.controllers.daemons.proxy import InterceptProxyHandler

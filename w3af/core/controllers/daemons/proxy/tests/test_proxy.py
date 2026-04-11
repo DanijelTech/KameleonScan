@@ -147,7 +147,7 @@ class TestProxy(unittest.TestCase):
 
         try:
             self.proxy_opener.open(get_moth_http()).read()
-        except urllib2.HTTPError, hte:
+        except urllib2.HTTPError as hte:
             # By default urllib2 handles 500 errors as exceptions, so we match
             # against this exception object
             self.assertEqual(hte.code, 500)

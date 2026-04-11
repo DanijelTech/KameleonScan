@@ -299,7 +299,7 @@ class CorePlugins(object):
         return factory(plugin_module)
 
     def expand_all(self):
-        for plugin_type, enabled_plugins in self._plugins_names_dict.iteritems():
+        for plugin_type, enabled_plugins in self._plugins_names_dict.items():
             if 'all' in enabled_plugins:
                 file_list = [f for f in os.listdir(
                     os.path.join(ROOT_PATH, 'plugins', plugin_type))]
@@ -313,14 +313,14 @@ class CorePlugins(object):
                 self._plugins_names_dict[plugin_type] = enabled_plugins
 
     def remove_exclusions(self):
-        for plugin_type, enabled_plugins in self._plugins_names_dict.iteritems():
+        for plugin_type, enabled_plugins in self._plugins_names_dict.items():
             for plugin_name in enabled_plugins[:]:
                 if plugin_name.startswith('!'):
                     enabled_plugins.remove(plugin_name)
                     enabled_plugins.remove(plugin_name.replace('!', ''))
 
     def resolve_dependencies(self):
-        for plugin_type, enabled_plugins in self._plugins_names_dict.iteritems():
+        for plugin_type, enabled_plugins in self._plugins_names_dict.items():
             for plugin_name in enabled_plugins:
 
                 plugin_inst = self.get_quick_instance(plugin_type, plugin_name)
@@ -351,7 +351,7 @@ class CorePlugins(object):
         """
         plugin_names = self._plugins_names_dict
 
-        for plugin_type, enabled_plugins in plugin_names.iteritems():
+        for plugin_type, enabled_plugins in plugin_names.items():
             for plugin_name in enabled_plugins:
                 plugin_inst = self.get_quick_instance(plugin_type, plugin_name)
 
@@ -385,7 +385,7 @@ class CorePlugins(object):
                     plugin_names[plugin_type][dependency_index] = plugin_name
 
     def create_instances(self):
-        for plugin_type, enabled_plugins in self._plugins_names_dict.iteritems():
+        for plugin_type, enabled_plugins in self._plugins_names_dict.items():
             for plugin_name in enabled_plugins:
                 plugin_instance = self.get_plugin_inst(plugin_type,
                                                        plugin_name)

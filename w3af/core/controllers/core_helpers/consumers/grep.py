@@ -322,7 +322,7 @@ class grep(BaseConsumer):
 
         try:
             plugin.grep_wrapper(request, response)
-        except Exception, e:
+        except Exception as e:
             self.handle_exception('grep', plugin_name, request, e)
         else:
             took_line.send()
@@ -345,7 +345,7 @@ class grep(BaseConsumer):
         for observer in self._observers:
             try:
                 observer.grep(self, request, response)
-            except Exception, e:
+            except Exception as e:
                 self.handle_exception('grep',
                                       'grep._run_observers()',
                                       'grep._run_observers()',

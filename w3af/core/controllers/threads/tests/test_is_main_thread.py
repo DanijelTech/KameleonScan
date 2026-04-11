@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 """
 import unittest
 import threading
-import Queue
+import queue
 
 from w3af.core.controllers.threads.is_main_thread import is_main_thread
 

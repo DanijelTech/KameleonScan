@@ -524,7 +524,7 @@ class _OrderedDict(dict):
 
     def iteritems(self):
         """
-        >>> ii = OrderedDict(((1, 3), (3, 2), (2, 1))).iteritems()
+        >>> ii = OrderedDict(((1, 3), (3, 2), (2, 1))).items()
         >>> ii.next()
         (1, 3)
         >>> ii.next()
@@ -536,7 +536,7 @@ class _OrderedDict(dict):
         StopIteration
         """
         def make_iter(self=self):
-            keys = self.iterkeys()
+            keys = self.keys()
             while True:
                 key = keys.next()
                 yield (key, self[key])
@@ -544,7 +544,7 @@ class _OrderedDict(dict):
 
     def iterkeys(self):
         """
-        >>> ii = OrderedDict(((1, 3), (3, 2), (2, 1))).iterkeys()
+        >>> ii = OrderedDict(((1, 3), (3, 2), (2, 1))).keys()
         >>> ii.next()
         1
         >>> ii.next()
@@ -561,7 +561,7 @@ class _OrderedDict(dict):
 
     def itervalues(self):
         """
-        >>> iv = OrderedDict(((1, 3), (3, 2), (2, 1))).itervalues()
+        >>> iv = OrderedDict(((1, 3), (3, 2), (2, 1))).values()
         >>> iv.next()
         3
         >>> iv.next()
@@ -573,7 +573,7 @@ class _OrderedDict(dict):
         StopIteration
         """
         def make_iter(self=self):
-            keys = self.iterkeys()
+            keys = self.keys()
             while True:
                 yield self[keys.next()]
         return make_iter()
@@ -609,7 +609,7 @@ class _OrderedDict(dict):
         TypeError: pop expected at most 2 arguments, got 3
         """
         if len(args) > 1:
-            raise TypeError, ('pop expected at most 2 arguments, got %s' %
+            raise TypeError('pop expected at most 2 arguments, got %s' %
                 (len(args) + 1))
         if key in self:
             val = self[key]
@@ -946,7 +946,7 @@ class Keys(object):
 
     def __contains__(self, item): return item in self._main._sequence
     def __len__(self): return len(self._main._sequence)
-    def __iter__(self): return self._main.iterkeys()
+    def __iter__(self): return self._main.keys()
     def count(self, item): return self._main._sequence.count(item)
     def index(self, item, *args): return self._main._sequence.index(item, *args)
     def reverse(self): self._main._sequence.reverse()
@@ -1030,7 +1030,7 @@ class Items(object):
 
     def __contains__(self, item): return item in self._main.items()
     def __len__(self): return len(self._main._sequence) # easier :-)
-    def __iter__(self): return self._main.iteritems()
+    def __iter__(self): return self._main.items()
     def count(self, item): return self._main.items().count(item)
     def index(self, item, *args): return self._main.items().index(item, *args)
     def reverse(self): self._main.reverse()
@@ -1134,7 +1134,7 @@ class Values(object):
 
     def __contains__(self, item): return item in self._main.values()
     def __len__(self): return len(self._main._sequence) # easier :-)
-    def __iter__(self): return self._main.itervalues()
+    def __iter__(self): return self._main.values()
     def count(self, item): return self._main.values().count(item)
     def index(self, item, *args): return self._main.values().index(item, *args)
 

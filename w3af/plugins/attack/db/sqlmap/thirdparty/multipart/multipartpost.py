@@ -59,7 +59,7 @@ class MultipartPostHandler(urllib2.BaseHandler):
                         v_vars.append((key, value))
             except TypeError:
                 systype, value, traceback = sys.exc_info()
-                raise SqlmapDataException, "not a valid non-string sequence or mapping object", traceback
+                raise SqlmapDataException("not a valid non-string sequence or mapping object").with_traceback(traceback)
 
             if len(v_files) == 0:
                 data = urllib.urlencode(v_vars, doseq)
@@ -67,7 +67,7 @@ class MultipartPostHandler(urllib2.BaseHandler):
                 boundary, data = self.multipart_encode(v_vars, v_files)
                 contenttype = "multipart/form-data; boundary=%s" % boundary
                 #if (request.has_header("Content-Type") and request.get_header("Content-Type").find("multipart/form-data") != 0):
-                #    print "Replacing %s with %s" % (request.get_header("content-type"), "multipart/form-data")
+                #    print("Replacing %s with %s") % (request.get_header("content-type"), "multipart/form-data")
                 request.add_unredirected_header("Content-Type", contenttype)
 
             request.add_data(data)

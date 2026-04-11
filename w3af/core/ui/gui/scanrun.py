@@ -23,7 +23,7 @@ import gobject
 import urllib2
 import sys
 import re
-import Queue
+import queue
 import webkit
 import webbrowser
 
@@ -155,7 +155,7 @@ class FullKBTree(KBTree):
                 # from disk and if they aren't there an exception will rise
                 history_item.request
                 history_item.response
-            except IOError, ioe:
+            except IOError as ioe:
                 self._show_message(_('Error'), str(ioe))
                 return
 
@@ -410,7 +410,7 @@ class URLsGraph(gtk.VBox):
         
         try:
             new_widget.set_dotcode(dotcode)
-        except ValueError, ve:
+        except ValueError as ve:
             msg = ('A ValueError exception with message "%s" was found while'
                    ' trying to render a new dotcode. Please create a new'
                    ' bug report at %s including the following info:\n\n%s')

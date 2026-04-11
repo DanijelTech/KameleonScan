@@ -56,7 +56,7 @@ class FormFieldMixin(object):
         return state
 
     def __setstate__(self, state):
-        for k, v in state.iteritems():
+        for k, v in state.items():
             setattr(self, k, v)
 
 
@@ -180,7 +180,7 @@ def get_value_by_key(attrs, *args):
     :return: The first value for the attribute specified in args
     """
     for search_attr_key in args:
-        for attr_key, attr_value in attrs.iteritems():
+        for attr_key, attr_value in attrs.items():
             if attr_key.lower() == search_attr_key:
                 return attr_value
     return None

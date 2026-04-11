@@ -97,7 +97,7 @@ class TestFileUpload(PluginTest):
 
 class TestParseOutputFromUpload(PluginTest):
 
-    target_url = u'http://w3af.org/'
+    target_url = 'http://w3af.org/'
 
     FORM = """\
           <form enctype="multipart/form-data" action="upload" method="POST">
@@ -166,7 +166,7 @@ class TestParseOutputFromUpload(PluginTest):
 
 class TestRegexOutputFromUpload(TestParseOutputFromUpload):
 
-    target_url = u'http://w3af.org/'
+    target_url = 'http://w3af.org/'
 
     FORM = """\
           <form enctype="multipart/form-data" action="upload" method="POST">

@@ -138,7 +138,7 @@ class TestURLEncodedForm(unittest.TestCase):
         form = URLEncodedForm(form_params)
 
         self.assertEqual(urllib.unquote(str(form)).decode('utf-8'),
-                         u'c=ñçÑÇ&address=bsas&v=áéíóú')
+                         'c=ñçÑÇ&address=bsas&v=áéíóú')
 
     def test_form_str_radio_select(self):
         form_dict = form_with_radio + form_with_checkbox + form_select_cars

@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 """
 import sys
 import time
-import Queue
+import queue
 import threading
 import traceback
 
@@ -175,7 +175,7 @@ def add_traceback_string(_exception):
 
         try:
             ...
-        except PoolException, pe:
+        except PoolException as pe:
             if isinstance(pe.original_exception, TypeError):
                 ...
 
@@ -282,7 +282,7 @@ class Worker(object):
 
             try:
                 result = (True, func(*args, **kwds))
-            except Exception, e:
+            except Exception as e:
                 add_traceback_string(e)
                 result = (False, e)
 

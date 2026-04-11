@@ -66,36 +66,36 @@ class TestSGMLParser(unittest.TestCase):
         self.assertEqual(p.get_emails(), set())
 
     def test_extract_emails_mailto(self):
-        body = u'<a href="mailto:abc@w3af.com">test</a>'
+        body = '<a href="mailto:abc@w3af.com">test</a>'
         resp = build_http_response(self.url, body)
         p = SGMLParser(resp)
         p.parse()
 
-        expected_res = {u'abc@w3af.com'}
+        expected_res = {'abc@w3af.com'}
         self.assertEqual(p.get_emails(), expected_res)
 
     def test_extract_emails_mailto_dup(self):
-        body = u'<a href="mailto:abc@w3af.com">a</a>'\
-               u'<a href="mailto:abc@w3af.com">b</a>'
+        body = '<a href="mailto:abc@w3af.com">a</a>'\
+               '<a href="mailto:abc@w3af.com">b</a>'
         resp = build_http_response(self.url, body)
         p = SGMLParser(resp)
         p.parse()
 
-        expected_res = {u'abc@w3af.com'}
+        expected_res = {'abc@w3af.com'}
         self.assertEqual(p.get_emails(), expected_res)
 
     def test_extract_emails_mailto_not_dup(self):
-        body = u'<a href="mailto:abc@w3af.com">a</a>'\
-               u'<a href="mailto:abc_def@w3af.com">b</a>'
+        body = '<a href="mailto:abc@w3af.com">a</a>'\
+               '<a href="mailto:abc_def@w3af.com">b</a>'
         resp = build_http_response(self.url, body)
         p = SGMLParser(resp)
         p.parse()
 
-        expected_res = {u'abc@w3af.com', u'abc_def@w3af.com'}
+        expected_res = {'abc@w3af.com', 'abc_def@w3af.com'}
         self.assertEqual(p.get_emails(), expected_res)
 
     def test_mailto_ignored_in_links(self):
-        body = u'<a href="mailto:abc@w3af.com">a</a>'
+        body = '<a href="mailto:abc@w3af.com">a</a>'
         resp = build_http_response(self.url, body)
         p = SGMLParser(resp)
         p.parse()
@@ -104,13 +104,13 @@ class TestSGMLParser(unittest.TestCase):
         self.assertEqual(parsed, [])
 
     def test_mailto_subject_body(self):
-        body = u'<a href="mailto:abc@w3af.com?subject=testing out mailto'\
-               u'&body=Just testing">test</a>'
+        body = '<a href="mailto:abc@w3af.com?subject=testing out mailto'\
+               '&body=Just testing">test</a>'
         resp = build_http_response(self.url, body)
         p = SGMLParser(resp)
         p.parse()
 
-        expected_res = {u'abc@w3af.com'}
+        expected_res = {'abc@w3af.com'}
         self.assertEqual(p.get_emails(), expected_res)
 
     def test_parser_attrs(self):
@@ -263,7 +263,7 @@ class TestSGMLParser(unittest.TestCase):
 
         raise SkipTest('Not sure why this one is failing :S')
 
-        for lang_desc, (body, encoding) in TEST_RESPONSES.iteritems():
+        for lang_desc, (body, encoding) in TEST_RESPONSES.items():
             encoding_header = 'text/html; charset=%s' % encoding
             headers = Headers([('Content-Type', encoding_header)])
 
@@ -286,7 +286,7 @@ class TestSGMLParser(unittest.TestCase):
         test_file = os.path.join(ROOT_PATH, test_file_path)
         body = file(test_file, 'rb').read()
 
-        sample_encodings = [encoding for _, (_, encoding) in TEST_RESPONSES.iteritems()]
+        sample_encodings = [encoding for _, (_, encoding) in TEST_RESPONSES.items()]
         sample_encodings.extend(['', 'utf-8'])
 
         for encoding in sample_encodings:

@@ -187,7 +187,7 @@ class OpenerSettings(Configurable):
 
         try:
             cj.load(cookiejar_file)
-        except cookielib.LoadError, cle:
+        except cookielib.LoadError as cle:
             # pylint: disable=E1101
             if cle.message.startswith('invalid Netscape format cookies file'):
                 docs_url = ('http://docs.w3af.org/en/latest/'

@@ -94,16 +94,16 @@ class php_sca(Payload):
             return {}
 
         # Was able to download files
-        for url, file in files.iteritems():
+        for url, file in files.items():
             try:
                 sca = PhpSCA(file=file[1])
                 vulns = sca.get_vulns()
-            except Exception, e:
+            except Exception as e:
                 msg = 'The PHP SCA failed with an unhandled exception: "%s".'
                 om.out.console(msg % e)
                 return {}
 
-            for vulnty, funcs in vulns.iteritems():
+            for vulnty, funcs in vulns.items():
                 # Write to KB
                 write_vuln_to_kb(vulnty, url, funcs)
                 # Fill res dict
@@ -120,7 +120,7 @@ class php_sca(Payload):
             return 'No vulnerability was found.'
 
         rows = [['Vuln Type', 'Remote Location', 'Vuln Param', 'Lineno'], []]
-        for vulnty, files in api_res.iteritems():
+        for vulnty, files in api_res.items():
             for f in files:
                 rows.append(
                     [vulnty, str(f['loc']), f['vulnsrc'], str(f['lineno'])])

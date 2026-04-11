@@ -147,7 +147,7 @@ def headers_url_generator(resp, fuzzable_req):
     """
     resp_headers = resp.get_headers()
 
-    for parser, header_names in URL_HEADERS.iteritems():
+    for parser, header_names in URL_HEADERS.items():
         for header_name in header_names:
 
             header_value, _ = resp_headers.iget(header_name, None)

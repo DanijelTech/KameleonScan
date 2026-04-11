@@ -36,11 +36,11 @@ from w3af import ROOT_PATH
 
 
 TEST_RESPONSES = {
-    'hebrew': (u'ולהכיר טוב יותר את המוסכמות, האופי', 'Windows-1255'),
-    'japanese': (u'頴英 衛詠鋭液疫 益駅悦謁越榎厭円', 'EUC-JP'),
-    'russian': (u'Вы действительно хотите удалить? Данное действие', 'Windows-1251'),
-    'hungarian': (u'Üdvözöljük a SZTAKI webkeresőjében', 'ISO-8859-2'),
-    'greek': (u'Παρακαλούμε πριν προχωρήσετε καταχώρηση', 'ISO-8859-7'),
+    'hebrew': ('ולהכיר טוב יותר את המוסכמות, האופי', 'Windows-1255'),
+    'japanese': ('頴英 衛詠鋭液疫 益駅悦謁越榎厭円', 'EUC-JP'),
+    'russian': ('Вы действительно хотите удалить? Данное действие', 'Windows-1251'),
+    'hungarian': ('Üdvözöljük a SZTAKI webkeresőjében', 'ISO-8859-2'),
+    'greek': ('Παρακαλούμε πριν προχωρήσετε καταχώρηση', 'ISO-8859-7'),
 }
 
 
@@ -50,7 +50,7 @@ class TestHTTPResponse(unittest.TestCase):
     def setUp(self):
         self.resp = self.create_resp(Headers([('Content-Type', 'text/html')]))
 
-    def create_resp(self, headers, body=u'body'):
+    def create_resp(self, headers, body='body'):
         url = URL('http://w3af.com')
         return HTTPResponse(200, body, headers, url, url)
 
@@ -244,7 +244,7 @@ class TestHTTPResponse(unittest.TestCase):
         msg = 'D\xe9plac\xe9 Temporairement'
         resp = HTTPResponse(200, '', headers, url, url, msg=msg)
 
-        expected_dump = u'HTTP/1.1 200 Déplacé Temporairement\r\n'.encode('utf8')
+        expected_dump = 'HTTP/1.1 200 Déplacé Temporairement\r\n'.encode('utf8')
 
         self.assertEqual(resp.dump_response_head(), expected_dump)
 
@@ -285,7 +285,7 @@ class TestHTTPResponse(unittest.TestCase):
         resp = self.create_resp(headers, html)
 
         header_dump = resp.dump_headers(exclude_headers={'date'})
-        self.assertEqual(header_dump, u'Content-Type: text/html\r\n')
+        self.assertEqual(header_dump, 'Content-Type: text/html\r\n')
 
         header_dump = resp.dump_headers(exclude_headers={})
-        self.assertEqual(header_dump, u'Content-Type: text/html\r\nDate: 2019-02-02 10:11:12 am\r\n')
+        self.assertEqual(header_dump, 'Content-Type: text/html\r\nDate: 2019-02-02 10:11:12 am\r\n')

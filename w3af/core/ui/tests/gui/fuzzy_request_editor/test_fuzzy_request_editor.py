@@ -46,7 +46,7 @@ Content-Type: application/x-www-form-urlencoded
 class TestFuzzyRequestEditor(XpresserUnittest):
     
     IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'fuzzy_request_editor', 'images')
-    EXTRA_IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'tools_menu', 'images')
+    EXTRA_IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'tools_men', 'images')
     
     def setUp(self):
         XpresserUnittest.setUp(self)
@@ -127,7 +127,7 @@ class TestFuzzyRequestEditor(XpresserUnittest):
             self.assertEqual('/%s' % i, daemon_request.path)
             self.assertEqual(parsed_request.get_method(), daemon_request.command)
         
-            for header_name, header_value in parsed_request.get_headers().iteritems():
+            for header_name, header_value in parsed_request.get_headers().items():
                 self.assertIn(header_name.lower(), daemon_request.headers)
                 self.assertEqual(header_value, daemon_request.headers[header_name.lower()])
             
@@ -180,7 +180,7 @@ class TestFuzzyRequestEditor(XpresserUnittest):
             self.assertEqual('/%s' % i, daemon_request.path)
             self.assertEqual('POST', daemon_request.command)
         
-            for header_name, header_value in parsed_request.get_headers().iteritems():
+            for header_name, header_value in parsed_request.get_headers().items():
                 self.assertIn(header_name.lower(), daemon_request.headers)
                 self.assertEqual(header_value, daemon_request.headers[header_name.lower()])
         

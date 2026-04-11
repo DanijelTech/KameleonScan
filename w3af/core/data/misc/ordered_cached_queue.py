@@ -20,13 +20,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 """
 import uuid
-import Queue
+import queue
 import bisect
 
 import w3af.core.controllers.output_manager as om
 
 from w3af.core.data.db.disk_dict import DiskDict
-from w3af.core.data.misc.smart_queue import QueueSpeedMeasurement
+from w3af.core.data.misc.smart_queue import queueSpeedMeasurement
 from w3af.core.controllers.core_helpers.consumers.constants import POISON_PILL
 
 

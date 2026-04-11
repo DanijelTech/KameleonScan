@@ -26,8 +26,8 @@ from w3af.plugins.attack.payloads.payload_handler import exec_payload
 class test_apache_mod_security(PayloadTestHelper):
 
     EXPECTED_RESULT = {'file': {'/etc/apache2/mods-available/mod-security.conf':
-                                u'<IfModule security2_module>\n\t# Default ...'},
-                       'version': {u'2.6.3 ': 'Yes'}}
+                                '<IfModule security2_module>\n\t# Default ...'},
+                       'version': {'2.6.3 ': 'Yes'}}
     
     maxDiff = None
     

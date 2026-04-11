@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 """
 import copy
-import Queue
+import queue
 import select
 import textwrap
 
@@ -292,7 +292,7 @@ class SQLMapShell(ReadShell):
         """
         try:
             self._rOS = read_os_detection(self.read)
-        except OSDetectionException, osde:
+        except OSDetectionException as osde:
             om.out.debug('%s' % osde)
             self._rOS = 'unknown'
         

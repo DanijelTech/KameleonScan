@@ -47,7 +47,7 @@ class eval(AuditPlugin):
         # PHP http://php.net/eval
         "echo str_repeat('%%s',%s);" % PRINT_REPEATS,
         # Perl http://perldoc.perl.org/functions/eval.html
-        "print '%%s'x%s" % PRINT_REPEATS,
+        "print('%%s')x%s" % PRINT_REPEATS,
         # Python
         # http://docs.python.org/reference/simple_stmts.html#the-exec-statement
         "print('%%s'*%s)" % PRINT_REPEATS,
@@ -144,7 +144,8 @@ class eval(AuditPlugin):
             for delay_obj in self.WAIT_OBJ:
                 yield mutant, delay_obj, debugging_id
 
-    def _find_delay_in_mutant(self, (mutant, delay_obj, debugging_id)):
+    def _find_delay_in_mutant(self, args):
+        mutant, delay_obj, debugging_id = args
         """
         Try to delay the response and save a vulnerability if successful
 

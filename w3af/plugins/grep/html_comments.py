@@ -63,12 +63,12 @@ class html_comments(GrepPlugin):
         'pass', 'password', 'passwd', 'pwd', 'secret', 'stupid',
         
         # In Spanish
-        'tonto', 'porqueria', 'cuidado', 'usuario', u'contraseña',
+        'tonto', 'porqueria', 'cuidado', 'usuario', 'contraseña',
         'puta', 'email', 'security', 'captcha', 'pinga', 'cojones',
         
         # In Portuguese
-        'banco', 'bradesco', 'itau', 'visa', 'bancoreal', u'transfêrencia',
-        u'depósito', u'cartão', u'crédito', 'dados pessoais'
+        'banco', 'bradesco', 'ita', 'visa', 'bancoreal', 'transfêrencia',
+        'depósito', 'cartão', 'crédito', 'dados pessoais'
     )
 
     _multi_in = MultiIn([' %s ' % w for w in INTERESTING_WORDS])

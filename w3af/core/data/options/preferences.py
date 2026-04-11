@@ -23,7 +23,7 @@ from __future__ import with_statement
 
 import os
 
-from ConfigParser import RawConfigParser
+from configparser import RawConfigParser
 
 from w3af.core.controllers.misc.home_dir import get_home_dir
 from w3af.core.controllers.exceptions import BaseFrameworkException

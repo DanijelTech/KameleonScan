@@ -76,21 +76,21 @@ class form_auth(BruteforcePlugin):
 
         try:
             session = self._create_new_session(mutant, debugging_id)
-        except BaseFrameworkException, bfe:
+        except BaseFrameworkException as bfe:
             msg = 'Failed to create new session during form bruteforce setup: "%s"'
             om.out.debug(msg % bfe)
             return
 
         try:
             login_failed_bodies = self._id_failed_login_pages(mutant, session, debugging_id)
-        except BaseFrameworkException, bfe:
+        except BaseFrameworkException as bfe:
             msg = 'Failed to ID failed login page during form bruteforce setup: "%s"'
             om.out.debug(msg % bfe)
             return
 
         try:
             self._signature_test(mutant, session, login_failed_bodies, debugging_id)
-        except BaseFrameworkException, bfe:
+        except BaseFrameworkException as bfe:
             msg = 'Signature test failed during form bruteforce setup: "%s"'
             om.out.debug(msg % bfe)
             return

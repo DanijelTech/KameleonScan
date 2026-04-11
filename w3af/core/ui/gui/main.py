@@ -65,8 +65,8 @@ from w3af.core.ui.gui.tools.proxywin import ProxiedRequests
 
 # This is just general info, to help people know their system and report more
 # complete bugs
-print "Starting w3af, running on:"
-print get_versions()
+print("Starting w3af, running on:")
+print(get_versions())
 
 # pylint: disable=E1101
 # Threading initializer
@@ -222,7 +222,7 @@ class MainApp(object):
         genconfigfile = os.path.join(get_home_dir(), "gui_config.pkl")
         try:
             self.generalconfig = shelve.open(genconfigfile)
-        except Exception, e:
+        except Exception as e:
             print ("WARNING: something bad happened when trying to open the"
                    " general config! File: %s. Problem: %s" % (genconfigfile, e))
             self.generalconfig = FakeShelve()
@@ -277,7 +277,7 @@ class MainApp(object):
             ('SaveAs', gtk.STOCK_SAVE_AS, _('Save _as...'), None, _('Save this configuration in a new profile'), lambda w: self.profile_action("save_as")),
             ('Revert', gtk.STOCK_REVERT_TO_SAVED, _('_Revert'), None, _('Revert the profile to its saved state'), lambda w: self.profile_action("revert")),
             ('Delete', gtk.STOCK_DELETE, _('_Delete'), None, _('Delete this profile'), lambda w: self.profile_action("delete")),
-            ('ProfilesMenu', None, _('_Profiles')),
+            ('ProfilesMen', None, _('_Profiles')),
             ('ViewMenuScan', None, _('_View')),
             ('ViewMenuExploit', None, _('_View')),
 
@@ -290,10 +290,10 @@ class MainApp(object):
                 'HTTP configuration'), self.menu_config_http),
             ('Miscellaneous', None, _('_Miscellaneous'), None,
              _('Miscellaneous configuration'), self.menu_config_misc),
-            ('ConfigurationMenu', None, _('_Configuration')),
+            ('ConfigurationMen', None, _('_Configuration')),
 
             ('ManualRequest', gtk.STOCK_INDEX, _('_Manual Request'), '<Control>m', _('Generate manual HTTP request'), self._manual_request),
-            ('FuzzyRequest', gtk.STOCK_PROPERTIES, _('_Fuzzy Request'), '<Control>u', _('Generate fuzzy HTTP requests'), self._fuzzy_request),
+            ('FuzzyRequest', gtk.STOCK_PROPERTIES, _('_Fuzzy Request'), '<Control>', _('Generate fuzzy HTTP requests'), self._fuzzy_request),
             ('EncodeDecode', gtk.STOCK_CONVERT, _('Enc_ode/Decode'), '<Control>o', _('Encodes and Decodes in different ways'), self._encode_decode),
             ('ExportRequest', gtk.STOCK_COPY, _('_Export Request'),
              '<Control>e', _('Export HTTP request'), self._export_request),
@@ -302,7 +302,7 @@ class MainApp(object):
             ('Proxy', gtk.STOCK_CONNECT, _('_Proxy'), '<Control>p',
              _('Proxies the HTTP requests, allowing their modification'),
              self._proxy_tool),
-            ('ToolsMenu', None, _('_Tools')),
+            ('ToolsMen', None, _('_Tools')),
 
             ('Wizards', gtk.STOCK_SORT_ASCENDING, _('_Wizards'),
              None, _('Point & Click Penetration Test'), self._wizards),
@@ -312,7 +312,7 @@ class MainApp(object):
                 'Help regarding the framework'), self.menu_help),
             ('About', gtk.STOCK_ABOUT, _('_About'), None, _(
                 'About the framework'), self.menu_about),
-            ('HelpMenu', None, _('_Help')),
+            ('HelpMen', None, _('_Help')),
 
             ('StartStop', gtk.STOCK_MEDIA_PLAY, _('_Start'),
              None, _('Start scan'), self._scan_director),
@@ -413,7 +413,7 @@ class MainApp(object):
         self.pcbody = pluginconfig.PluginConfigBody(self, self.w3af)
         try:
             self.profiles = profiles.ProfileList(self.w3af, initial=profile)
-        except ValueError, ve:
+        except ValueError as ve:
             # This is raised when the profile doesn't exist
             #
             # I handle this by creating the profiles without an initial profile

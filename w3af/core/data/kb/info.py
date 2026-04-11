@@ -153,7 +153,7 @@ class Info(dict):
         references = None
         owasp_top_10_references = None
 
-        for k, v in self.iteritems():
+        for k, v in self.items():
             attributes[str(k)] = str(v)
 
         if self.has_db_details():

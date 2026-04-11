@@ -120,7 +120,7 @@ def urlencode(query, encoding, safe='/<>"\'=:()'):
         except TypeError:
             tb = sys.exc_info()[2]
             msg = "not a valid non-string sequence or mapping object"
-            raise TypeError, msg, tb
+            raise TypeError(msg).with_traceback(tb)
 
     l = []
 

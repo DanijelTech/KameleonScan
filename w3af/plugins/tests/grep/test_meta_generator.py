@@ -63,9 +63,9 @@ class TestMetaGenerator(unittest.TestCase):
 
         self.assertEquals(info_set.get_url(), self.url)
 
-        expected_desc = (u'The application returned 1 HTTP responses containing the'
-                         u' generator meta tag value "wordpress 1.2.3". The first'
-                         u' ten URLs  that match are:\n - http://www.w3af.com/\n')
+        expected_desc = ('The application returned 1 HTTP responses containing the'
+                         ' generator meta tag value "wordpress 1.2.3". The first'
+                         ' ten URLs  that match are:\n - http://www.w3af.com/\n')
         self.assertEquals(info_set.get_desc(), expected_desc)
 
     @patch('w3af.plugins.grep.meta_generator.is_404', side_effect=repeat(False))
@@ -87,13 +87,13 @@ class TestMetaGenerator(unittest.TestCase):
 
         self.assertEquals(urls, {self.url, self.url})
 
-        expected_desc_1 = (u'The application returned 1 HTTP responses containing the'
-                           u' generator meta tag value "wordpress 1.2.3". The first'
-                           u' ten URLs  that match are:\n - http://www.w3af.com/\n')
+        expected_desc_1 = ('The application returned 1 HTTP responses containing the'
+                           ' generator meta tag value "wordpress 1.2.3". The first'
+                           ' ten URLs  that match are:\n - http://www.w3af.com/\n')
 
-        expected_desc_2 = (u'The application returned 1 HTTP responses containing the'
-                           u' generator meta tag value "wordpress 1.2.4". The first'
-                           u' ten URLs  that match are:\n - http://www.w3af.com/\n')
+        expected_desc_2 = ('The application returned 1 HTTP responses containing the'
+                           ' generator meta tag value "wordpress 1.2.4". The first'
+                           ' ten URLs  that match are:\n - http://www.w3af.com/\n')
 
         self.assertEquals(descs, {expected_desc_1, expected_desc_2})
 

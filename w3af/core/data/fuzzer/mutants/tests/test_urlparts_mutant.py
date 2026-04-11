@@ -42,7 +42,7 @@ class TestURLPartsMutant(unittest.TestCase):
         m = URLPartsMutant(freq)
         m.set_dc(divided_path)
         self.assertEqual(m.get_url().url_string,
-                         u'http://www.w3af.com/ping%21/bar')
+                         'http://www.w3af.com/ping%21/bar')
 
         expected_found_at = '"http://www.w3af.com/ping%21/bar", using HTTP method'\
                             ' GET. The modified parameter was the URL path, with'\

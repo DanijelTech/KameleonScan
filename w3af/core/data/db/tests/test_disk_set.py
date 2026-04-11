@@ -48,7 +48,7 @@ class TestDiskSet(unittest.TestCase):
 
         self.assertEqual(list(ds), [1, 2, 3])
         self.assertEqual(len(ds), 3)
-        self.assertEqual(unicode(ds), u'<DiskSet [1, 2, 3]>')
+        self.assertEqual(unicode(ds), '<DiskSet [1, 2, 3]>')
 
     def test_add_urlobject(self):
         ds = DiskSet()

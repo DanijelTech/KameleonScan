@@ -27,7 +27,7 @@ from w3af.core.ui.tests.wrappers.xpresser_unittest import XpresserUnittest
 class TestEncodeDecode(XpresserUnittest):
     
     IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'encode_decode', 'images')
-    EXTRA_IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'tools_menu', 'images')
+    EXTRA_IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'tools_men', 'images')
     
     def setUp(self):
         super(TestEncodeDecode, self).setUp()

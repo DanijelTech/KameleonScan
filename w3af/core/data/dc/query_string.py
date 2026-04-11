@@ -25,7 +25,7 @@ from w3af.core.data.constants.encodings import DEFAULT_ENCODING
 from w3af.core.data.dc.generic.kv_container import KeyValueContainer
 from w3af.core.data.dc.utils.token import DataToken
 
-ERR_MSG = 'Unsupported value "%s", expected format is [u"2", u"abc"].'
+ERR_MSG = 'Unsupported value "%s", expected format is ["2", "abc"].'
 
 
 class QueryString(KeyValueContainer):

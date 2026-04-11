@@ -28,7 +28,7 @@ import sqlite3
 from functools import wraps
 
 from concurrent.futures import Future
-from multiprocessing.dummy import Queue, Process
+from multiprocessing.dummy import queue, Process
 
 import w3af.core.controllers.output_manager as om
 
@@ -465,7 +465,7 @@ class SQLiteExecutor(Process):
 
             try:
                 result = handler(*args, **kwds)
-            except sqlite3.OperationalError, e:
+            except sqlite3.OperationalError as e:
                 # I don't like this string match, but it seems that the
                 # exception doesn't have any error code to match
                 if 'no such table' in str(e):
@@ -481,7 +481,7 @@ class SQLiteExecutor(Process):
 
                 future.set_exception(dbe)
 
-            except Exception, e:
+            except Exception as e:
                 dbe = DBException(str(e))
                 future.set_exception(dbe)
 

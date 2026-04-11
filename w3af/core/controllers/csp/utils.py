@@ -542,7 +542,7 @@ def retrieve_csp_policies(response, select_only_reportonly_policies=False,
                     policies[directive_name].append(tmp_value)
     
     # Do cleanup: Remove directive name without any policies
-    policies = dict((k, v) for k, v in policies.iteritems() if len(v) > 0)
+    policies = dict((k, v) for k, v in policies.items() if len(v) > 0)
     
     # Add misspelled directives names list if dedicated flag is set
     if (select_also_misspelled_directives 

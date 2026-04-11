@@ -136,8 +136,8 @@ class FormAuthTest(GenericFormAuthTest):
 
 class TestFormAuthFailedLoginMatchTrivial(GenericFormAuthTest):
 
-    target_url = u'http://w3af.org/'
-    login_url = u'http://w3af.org/login'
+    target_url = 'http://w3af.org/'
+    login_url = 'http://w3af.org/login'
 
     FORM = ('<form method="POST" action="/login">'
             '    <input name="username" type="text" />'
@@ -190,8 +190,8 @@ class TestFormAuthFailedLoginMatchTrivial(GenericFormAuthTest):
 
 class TestFormAuthFailedLoginMatchWithStaticLargeResponse(GenericFormAuthTest):
 
-    target_url = u'http://w3af.org/'
-    login_url = u'http://w3af.org/login'
+    target_url = 'http://w3af.org/'
+    login_url = 'http://w3af.org/login'
 
     FORM = ('<form method="POST" action="/login">'
             '    <input name="username" type="text" />'
@@ -251,8 +251,8 @@ class TestFormAuthFailedLoginMatchWithStaticLargeResponse(GenericFormAuthTest):
 
 class TestFormAuthFailedLoginMatchWithLargeRandomFailedResponse(GenericFormAuthTest):
 
-    target_url = u'http://w3af.org/'
-    login_url = u'http://w3af.org/login'
+    target_url = 'http://w3af.org/'
+    login_url = 'http://w3af.org/login'
 
     FORM = ('<form method="POST" action="/login">'
             '    <input name="username" type="text" />'
@@ -317,8 +317,8 @@ class TestFormAuthFailedLoginMatchWithLargeRandomFailedResponse(GenericFormAuthT
 
 class TestFormAuthFailedLoginMatchWithLargeRandomFailedResponseShortSuccess(GenericFormAuthTest):
 
-    target_url = u'http://w3af.org/'
-    login_url = u'http://w3af.org/login'
+    target_url = 'http://w3af.org/'
+    login_url = 'http://w3af.org/login'
 
     FORM = ('<form method="POST" action="/login">'
             '    <input name="username" type="text" />'
@@ -384,8 +384,8 @@ captcha_count = 1
 
 class TestFormAuthFailedLoginMatchWithCAPTCHA(GenericFormAuthTest):
 
-    target_url = u'http://w3af.org/'
-    login_url = u'http://w3af.org/login'
+    target_url = 'http://w3af.org/'
+    login_url = 'http://w3af.org/login'
 
     FORM = ('<form method="POST" action="/login">'
             '    <input name="username" type="text" />'

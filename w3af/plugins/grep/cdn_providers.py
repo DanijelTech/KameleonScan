@@ -33,7 +33,7 @@ class cdn_providers(GrepPlugin):
     # CDN headers stored in format ['header-name', 'header-value', 'provider's name']
     cdn_headers = (
         ['server', 'cloudflare', 'Cloudflare'],
-        ['server', 'yunjiasu', 'Yunjiasu'],
+        ['server', 'yunjias', 'Yunjiasu'],
         ['server', 'ECS', 'Edgecast'],
         ['server', 'ECAcc', 'Edgecast'],
         ['server', 'ECD', 'Edgecast'],
@@ -167,7 +167,7 @@ class cdn_providers(GrepPlugin):
         ['.azioncdn.net', 'Azion'],
         ['.azioncdn.com', 'Azion'],
         ['.azion.net', 'Azion'],
-        ['.cdncloud.net.au', 'MediaCloud'],
+        ['.cdncloud.net.a', 'MediaCloud'],
         ['.rncdn1.com', 'Reflected Networks'],
         ['.cdnsun.net', 'CDNsun'],
         ['.mncdn.com', 'Medianova'],
@@ -179,7 +179,7 @@ class cdn_providers(GrepPlugin):
         ['.resrc.it', 'ReSRC.it'],
         ['.zenedge.net', 'Zenedge'],
         ['.lswcdn.net', 'LeaseWeb CDN'],
-        ['.lswcdn.eu', 'LeaseWeb CDN'],
+        ['.lswcdn.e', 'LeaseWeb CDN'],
         ['.revcn.net', 'Rev Software'],
         ['.revdn.net', 'Rev Software'],
         ['.caspowa.com', 'Caspowa'],
@@ -209,9 +209,9 @@ class cdn_providers(GrepPlugin):
         ['.b-cdn.net', 'BunnyCDN'],
         ['.pix-cdn.org', 'Advanced Hosters CDN'],
         ['.roast.io', 'Roast.io'],
-        ['.cdnvideo.ru', 'CDNvideo'],
+        ['.cdnvideo.r', 'CDNvideo'],
         ['.cdnvideo.net', 'CDNvideo'],
-        ['.trbcdn.ru', 'TRBCDN'],
+        ['.trbcdn.r', 'TRBCDN'],
         ['.cedexis.net', 'Cedexis'],
         ['.streamprovider.net', 'Rocket CDN'],
     ]

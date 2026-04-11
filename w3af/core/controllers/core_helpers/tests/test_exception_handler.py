@@ -54,7 +54,7 @@ class TestExceptionHandler(unittest.TestCase):
 
         try:
             raise Exception('unittest')
-        except Exception, e:
+        except Exception as e:
             exec_info = sys.exc_info()
             enabled_plugins = ''
             self.exception_handler.handle(self.status,
@@ -89,7 +89,7 @@ class TestExceptionHandler(unittest.TestCase):
         for _ in xrange(10):
             try:
                 raise Exception('unittest')
-            except Exception, e:
+            except Exception as e:
                 exec_info = sys.exc_info()
                 enabled_plugins = ''
                 self.exception_handler.handle(self.status, e, exec_info,
@@ -115,7 +115,7 @@ class TestExceptionHandler(unittest.TestCase):
         for _ in xrange(10):
             try:
                 raise Exception('unittest')
-            except Exception, e:
+            except Exception as e:
                 exec_info = sys.exc_info()
                 enabled_plugins = ''
                 self.exception_handler.handle(self.status, e, exec_info,
@@ -145,7 +145,7 @@ class TestExceptionHandler(unittest.TestCase):
         def test(ehandler):
             try:
                 test2()
-            except Exception, e:
+            except Exception as e:
                 exec_info = sys.exc_info()
                 enabled_plugins = ''
                 ehandler.handle(self.status, e, exec_info, enabled_plugins)
@@ -181,7 +181,7 @@ class TestExceptionHandler(unittest.TestCase):
         def test(ehandler):
             try:
                 test2()
-            except Exception, e:
+            except Exception as e:
                 exec_info = sys.exc_info()
                 enabled_plugins = ''
                 ehandler.handle(self.status, e, exec_info, enabled_plugins)
@@ -205,7 +205,7 @@ class FakeStatus(CoreStatus):
 class TestExceptionData(unittest.TestCase):
 
     def get_fuzzable_request(self):
-        headers = Headers([(u'Hello', u'World')])
+        headers = Headers([('Hello', 'World')])
         post_data = KeyValueContainer(init_val=[('a', ['b'])])
         url = URL('http://w3af.org')
         return FuzzableRequest(url, method='GET', post_data=post_data,
@@ -237,7 +237,7 @@ class TestExceptionData(unittest.TestCase):
     def test_serialize_deserialize(self):
         try:
             raise KeyError
-        except Exception, e:
+        except Exception as e:
             except_type, except_class, tb = sys.exc_info()
             enabled_plugins = '{}'
 
@@ -263,7 +263,7 @@ class TestExceptionData(unittest.TestCase):
     def test_fail_traceback_serialize(self):
         try:
             raise KeyError
-        except Exception, e:
+        except Exception as e:
             except_type, except_class, tb = sys.exc_info()
             enabled_plugins = '{}'
 

@@ -126,7 +126,7 @@ class TestOptionFactory(unittest.TestCase):
                 PORT: (12345, 12345)
                 }
 
-        for _type, (user_value, parsed_value) in data.iteritems():
+        for _type, (user_value, parsed_value) in data.items():
             opt = opt_factory('name', user_value, 'desc', _type)
 
             self.assertEqual(opt.get_name(), 'name')

@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 import unittest
 import os
 
-from ConfigParser import ConfigParser
+from configparser import configparser
 from nose.plugins.attrib import attr
 
 from w3af import ROOT_PATH

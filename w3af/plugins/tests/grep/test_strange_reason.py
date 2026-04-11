@@ -77,11 +77,11 @@ class TestStrangeReason(unittest.TestCase):
         info_sets = kb.kb.get('strange_reason', 'strange_reason')
         self.assertEquals(len(info_sets), 1)
 
-        expected_desc = u'The remote web server sent 1 HTTP responses with ' \
-                        u'the uncommon status message "Foos", manual ' \
-                        u'inspection is recommended. The first ten URLs ' \
-                        u'which sent the uncommon message are:\n' \
-                        u' - http://www.w3af.com/\n'
+        expected_desc = 'The remote web server sent 1 HTTP responses with ' \
+                        'the uncommon status message "Foos", manual ' \
+                        'inspection is recommended. The first ten URLs ' \
+                        'which sent the uncommon message are:\n' \
+                        ' - http://www.w3af.com/\n'
         info_set = info_sets[0]
         self.assertEqual(info_set.get_id(), [1, 3])
         self.assertEqual(info_set.get_desc(), expected_desc)

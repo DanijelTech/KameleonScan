@@ -56,11 +56,11 @@ class TestStrangeHeaders(unittest.TestCase):
         self.assertEquals(len(info_sets), 1)
 
         info = info_sets[0]
-        expected_desc = (u'The remote web server sent 1 HTTP responses with'
-                         u' the uncommon response header "hello-world", one'
-                         u' of the received header values is "yes!". The'
-                         u' first ten URLs which sent the uncommon header'
-                         u' are:\n - http://www.w3af.com/\n')
+        expected_desc = ('The remote web server sent 1 HTTP responses with'
+                         ' the uncommon response header "hello-world", one'
+                         ' of the received header values is "yes!". The'
+                         ' first ten URLs which sent the uncommon header'
+                         ' are:\n - http://www.w3af.com/\n')
         self.assertEqual(info.get_name(), 'Strange header')
         self.assertEqual(info.get_url(), url)
         self.assertEqual(info.get_desc(), expected_desc)
