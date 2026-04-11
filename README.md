@@ -1,7 +1,7 @@
 # KameleonScan - Web Application Security Scanner
 
 <p align="center">
-  <img src="doc/sphinx/images/w3af-logo.png" alt="KameleonScan logo" width="200"/>
+  <img src="doc/sphinx/images/Kameleon.png" alt="KameleonScan logo" width="200"/>
 </p>
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
