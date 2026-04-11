@@ -1,7 +1,7 @@
 # KameleonScan - Web Application Security Scanner
 
 <p align="center">
-  <img src="doc/sphinx/images/w3af-logo.png" alt="KameleonScan logo" width="200"/>
+  <img src="https://raw.githubusercontent.com/DanijelTech/KameleonScan/update-readme-image/doc/sphinx/images/Kameleon.png" alt="KameleonScan logo" width="200"/>
 </p>
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -9,11 +9,11 @@
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![codecov](https://codecov.io/gh/DanijelTech/KameleonScan/branch/main/graph/badge.svg)](https://codecov.io/gh/DanijelTech/KameleonScan)
 [![Security](https://img.shields.io/badge/security-bandit-orange.svg)](https://github.com/PyCQA/bandit)
-[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/w3af/w3af)
+[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/kameleonscan/kameleonscan)
 
 ## About
 
-[w3af](http://w3af.org/) is an open source web application security scanner which helps developers and penetration testers identify and exploit vulnerabilities in their web applications.
+KameleonScan is an open source web application security scanner which helps developers and penetration testers identify and exploit vulnerabilities in their web applications.
 
 The scanner is able to identify **200+ vulnerabilities**, including:
 - Cross-Site Scripting (XSS)
@@ -47,27 +47,27 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### Running w3af
+### Running KameleonScan
 
 ```bash
 # Command-line interface
-./w3af_console
+./kameleon_console
 
 # Graphical User Interface
-./w3af_gui
+./kameleon_gui
 
 # REST API server
-./w3af_api
+./kameleon_api
 ```
 
 ### Using Docker
 
 ```bash
 # Build the Docker image
-docker build -t w3af .
+docker build -t kameleonscan .
 
 # Run the container
-docker run -it w3af ./w3af_console
+docker run -it kameleonscan ./kameleon_console
 ```
 
 ## Features
@@ -83,7 +83,7 @@ docker run -it w3af ./w3af_console
 ## Documentation
 
 For detailed documentation, visit:
-- [w3af Documentation](http://docs.w3af.org/en/latest/)
+- [KameleonScan Documentation](http://docs.kameleonscan.org/en/latest/)
 - [Installation Guide](https://github.com/DanijelTech/KameleonScan/wiki/Installation)
 - [User Guide](https://github.com/DanijelTech/KameleonScan/wiki/User-Guide)
 
@@ -94,21 +94,21 @@ For detailed documentation, visit:
 ```bash
 # Install development dependencies
 pip install -r requirements.txt
-pip install -r w3af/tests/requirements.txt
+pip install -r kameleon/tests/requirements.txt
 pip install black flake8 isort mypy pylint pytest
 
 # Run tests
-pytest w3af/ -v
+pytest kameleon/ -v
 
 # Code formatting
-black w3af/
-isort w3af/
+black kameleon/
+isort kameleon/
 
 # Type checking
-mypy w3af/ --ignore-missing-imports
+mypy kameleon/ --ignore-missing-imports
 
 # Linting
-pylint w3af/
+pylint kameleon/
 ```
 
 ### CI/CD
@@ -133,7 +133,7 @@ This project is licensed under the GNU General Public License v2.0 - see the [LI
 
 ## Security
 
-For security vulnerabilities, please contact: info@w3af.org
+For security vulnerabilities, please contact: security@kameleonscan.org
 
 ## Support
 
@@ -144,5 +144,5 @@ For security vulnerabilities, please contact: info@w3af.org
 ---
 
 <p align="center">
-  Made with ❤️ by the w3af team
+  Made with ❤️ by the KameleonScan team
 </p>
