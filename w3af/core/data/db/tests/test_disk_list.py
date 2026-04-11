@@ -63,7 +63,7 @@ class TestDiskList(unittest.TestCase):
         dl.append(2)
         dl.append(3)
         
-        self.assertEqual(unicode(dl), u'<DiskList [1, 2, 3]>')
+        self.assertEqual(unicode(dl), '<DiskList [1, 2, 3]>')
             
     @attr('smoke')
     def test_string(self):
@@ -83,13 +83,13 @@ class TestDiskList(unittest.TestCase):
     def test_unicode(self):
         dl = DiskList()
 
-        dl.append(u'à')
-        dl.append(u'המלצת השבוע')
-        dl.append([u'à', ])
+        dl.append('à')
+        dl.append('המלצת השבוע')
+        dl.append(['à', ])
 
-        self.assertEqual(dl[0], u'à')
-        self.assertEqual(dl[1], u'המלצת השבוע')
-        self.assertEqual(dl[2], [u'à', ])
+        self.assertEqual(dl[0], 'à')
+        self.assertEqual(dl[1], 'המלצת השבוע')
+        self.assertEqual(dl[2], ['à', ])
 
     @attr('smoke')
     def test_urlobject(self):

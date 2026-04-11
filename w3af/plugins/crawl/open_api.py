@@ -167,7 +167,7 @@ class open_api(CrawlPlugin):
         #
         qs = spec_url.get_querystring()
 
-        for key, values in self._query_string_auth.iteritems():
+        for key, values in self._query_string_auth.items():
             qs[key] = values
 
         spec_url.set_querystring(qs)
@@ -321,11 +321,11 @@ class open_api(CrawlPlugin):
         query_string = uri.get_querystring()
 
         if self._header_auth:
-            for header_name, header_value in self._header_auth.iteritems():
+            for header_name, header_value in self._header_auth.items():
                 headers[header_name] = header_value
 
         if self._query_string_auth:
-            for qs_param, qs_value in self._query_string_auth.iteritems():
+            for qs_param, qs_value in self._query_string_auth.items():
                 query_string[qs_param] = qs_value
 
         uri.set_querystring(query_string)

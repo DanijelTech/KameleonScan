@@ -137,7 +137,7 @@ class GoogleAPISearch(object):
         if self._status == IS_NEW:
             try:
                 self._pages = self._do_google_search()
-            except BaseFrameworkException, w3:
+            except BaseFrameworkException as w3:
                 om.out.debug('%s' % w3)
                 self._status = FINISHED_BAD
             else:
@@ -222,7 +222,7 @@ class GAjaxSearch(GoogleAPISearch):
             # Do the request
             try:
                 resp = self._do_GET(google_url_instance)
-            except Exception, e:
+            except Exception as e:
                 msg = 'Failed to GET google.com AJAX API: "%s"'
                 raise BaseFrameworkException(msg % e)
 

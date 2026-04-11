@@ -246,7 +246,7 @@ class Entries:
                                 if isinstance(entry, basestring):
                                     colEntry = entry
                                 else:
-                                    colEntry = unArrayizeValue(entry[index]) if index < len(entry) else u''
+                                    colEntry = unArrayizeValue(entry[index]) if index < len(entry) else ''
 
                                 maxLen = max(len(column), len(DUMP_REPLACEMENTS.get(getUnicode(colEntry), getUnicode(colEntry))))
 
@@ -422,13 +422,13 @@ class Entries:
                                                         "db": safeSQLIdentificatorNaming(conf.db)}
                     try:
                         attackDumpedTable()
-                    except (IOError, OSError), ex:
+                    except (IOError, OSError) as ex:
                         errMsg = "an error occurred while attacking "
                         errMsg += "table dump ('%s')" % getSafeExString(ex)
                         logger.critical(errMsg)
                     conf.dumper.dbTableValues(kb.data.dumpedTable)
 
-            except SqlmapConnectionException, ex:
+            except SqlmapConnectionException as ex:
                 errMsg = "connection exception detected in dumping phase "
                 errMsg += "('%s')" % getSafeExString(ex)
                 logger.critical(errMsg)

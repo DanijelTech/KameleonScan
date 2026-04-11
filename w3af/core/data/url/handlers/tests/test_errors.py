@@ -52,6 +52,6 @@ class TestErrorHandler(unittest.TestCase):
         request = HTTPRequest(fail_url)
         try:
             opener.open(request)
-        except urllib2.HTTPError, response:
+        except urllib2.HTTPError as response:
             self.assertEqual(response.code, NOT_FOUND)
             self.assertEqual(response.id, 1)

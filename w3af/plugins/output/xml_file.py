@@ -199,7 +199,7 @@ class xml_file(OutputPlugin):
 
         try:
             self._add_scan_status_to_context(context)
-        except RuntimeError, rte:
+        except RuntimeError as rte:
             # In some very strange scenarios we get this error:
             #
             #   Can NOT call get_run_time before start()
@@ -815,14 +815,14 @@ def is_unicode_escape(i):
 
 
 ATTR_VALUE_ESCAPES = {
-    u'"': u'&quot;',
-    u'&': u'&amp;',
-    u'<': u'&lt;',
-    u'>': u'&gt;',
+    '"': '&quot;',
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
 
     # Note that here we replace tabs with 4-spaces, like in python ;-)
     # but it makes sense for easy parsing and showing to users
-    u'\t': u'    ',
+    '\t': '    ',
 }
 
 ATTR_VALUE_ESCAPES.update(dict((unichr(i), '&lt;character code=&quot;%04x&quot;/&gt;' % i)
@@ -863,7 +863,7 @@ def jinja2_attr_value_escape_filter(value):
     # Fix some encoding errors which are triggered when the value is not an
     # unicode string
     value = smart_unicode(value)
-    retval = u''
+    retval = ''
 
     for letter in value:
         if letter in ATTR_VALUE_ESCAPES_IGNORE:
@@ -880,14 +880,14 @@ def jinja2_attr_value_escape_filter(value):
 
 
 TEXT_VALUE_ESCAPES = {
-    u'"': u'&quot;',
-    u'&': u'&amp;',
-    u'<': u'&lt;',
-    u'>': u'&gt;',
+    '"': '&quot;',
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
 
     # Note that here we replace tabs with 4-spaces, like in python ;-)
     # but it makes sense for easy parsing and showing to users
-    u'\t': u'    ',
+    '\t': '    ',
 }
 
 TEXT_VALUE_ESCAPES.update(dict((unichr(i), '<character code="%04x"/>' % i)
@@ -924,7 +924,7 @@ def jinja2_text_value_escape_filter(value):
     # Fix some encoding errors which are triggered when the value is not an
     # unicode string
     value = smart_unicode(value)
-    retval = u''
+    retval = ''
 
     for letter in value:
         if letter in TEXT_VALUE_ESCAPES_IGNORE:

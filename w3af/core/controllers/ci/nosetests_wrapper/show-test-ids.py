@@ -22,7 +22,7 @@ def nose_strategy():
     get_test_ids(NOSE_RUN_SELECTOR)
     nose_data = cPickle.load(file(ID_FILE))
 
-    for key, value in nose_data['ids'].iteritems():
+    for key, value in nose_data['ids'].items():
         _, _, test_class_method = value
         print('%s:%s' % (key, test_class_method))
 

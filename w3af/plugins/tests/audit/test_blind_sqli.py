@@ -129,28 +129,28 @@ class TestOldMothBlindSQLI(PluginTest):
 
     def test_found_blind_sqli_old_moth(self):
         expected_path_param = {
-            (u'bsqli_string.php', u'email'),
-            (u'bsqli_integer.php', u'id'),
-            (u'forms/data_receptor.php', u'user'),
-            (u'completely_bsqli_single.php', u'email'),
-            (u'bsqli_string_rnd.php', u'email'),
-            (u'completely_bsqli_double.php', u'email'),
-            (u'completely_bsqli_integer.php', u'id'),
+            ('bsqli_string.php', 'email'),
+            ('bsqli_integer.php', 'id'),
+            ('forms/data_receptor.php', 'user'),
+            ('completely_bsqli_single.php', 'email'),
+            ('bsqli_string_rnd.php', 'email'),
+            ('completely_bsqli_double.php', 'email'),
+            ('completely_bsqli_integer.php', 'id'),
         }
 
         ok_to_miss = {
             # Just the HTML to have a form
-            u'forms/',
-            u'forms/test_forms.html',
+            'forms/',
+            'forms/test_forms.html',
 
             # False positive tests, these must NOT be detected by blind_sqli
-            u'random_500_lines.php',
-            u'random_500_lines_static.php',
-            u'random_50_lines.php',
-            u'random_50_lines_static.php',
-            u'random_5_lines.php',
-            u'random_5_lines_static.php',
-            u'delay_random.php',
+            'random_500_lines.php',
+            'random_500_lines_static.php',
+            'random_50_lines.php',
+            'random_50_lines_static.php',
+            'random_5_lines.php',
+            'random_5_lines_static.php',
+            'delay_random.php',
         }
         skip_startwith = set()
         kb_addresses = {('blind_sqli', 'blind_sqli')}

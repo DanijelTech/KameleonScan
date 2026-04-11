@@ -92,7 +92,7 @@ class http_vs_https_dist(InfrastructurePlugin):
         # usage (which is specially big in scapy module, just when importing)
         try:
             from scapy.all import traceroute
-        except ImportError, ie:
+        except ImportError as ie:
             om.out.debug('There was an error importing scapy.all: "%s"' % ie)
             return
 
@@ -105,7 +105,7 @@ class http_vs_https_dist(InfrastructurePlugin):
             http_troute = traceroute(domain, dport=http_port)[0].get_trace()
 
             # pylint: enable=E1124,E1136
-        except Exception, e:
+        except Exception as e:
             # I've seen numerous bug reports with the following exception:
             # "error: illegal IP address string passed to inet_aton"
             # that come from this part of the code. It seems that in some cases

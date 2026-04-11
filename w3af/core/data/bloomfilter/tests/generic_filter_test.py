@@ -96,7 +96,7 @@ class GenericFilterTest(unittest.TestCase):
 
     @only_if_subclass
     def test_unicode_string(self):
-        unicode_string = u'¡'
+        unicode_string = '¡'
         self.filter.add(unicode_string)
         
         self.assertIn(unicode_string, self.filter)

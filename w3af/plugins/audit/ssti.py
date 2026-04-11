@@ -126,7 +126,7 @@ class ssti(AuditPlugin):
     FILE_READ_PAYLOADS = {
         'jinja2': ['{{"".__class__.__mro__[2].__subclasses__()}}', '{{url_for.__globals__["__builtins__"].open("/etc/passwd").read()}}'],
         'twig': ['{{_self.env.getTemplate("/etc/passwd").render()}}', '{{include("/etc/passwd")}}'],
-        'erb': ['<%= File.read("/etc/passwd") %>', '<% require 'File' %>'],
+        'erb': ["<%= File.read('/etc/passwd') %>", "<% require 'File' %>"],
         'freemarker': ['<#assign ex="freemarker.template.utility.Execute"?new()> ${ ex("cat /etc/passwd") }'],
     }
 

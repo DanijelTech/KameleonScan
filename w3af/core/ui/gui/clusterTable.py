@@ -384,7 +384,7 @@ class clusterCellData(gtk.TreeView):
         # I'm talking about the self._colDict[ current_column ]!
         currentId = self.liststore[path[0]][self._colDict[view_column]]
         # Search the Id and show the data
-        print 'I should show the data for', currentId, 'in a different window.'
+        print('I should show the data for'), currentId, 'in a different window.'
 
     def _getInfoForId(self, id):
         """
@@ -392,7 +392,7 @@ class clusterCellData(gtk.TreeView):
         """
         try:
             obj = [i for i in self._data if i.get_id() == int(id)][0]
-        except Exception, e:
+        except Exception as e:
             return ''
         else:
             msg = '<b><i>Code: </i></b>%s\n<b><i>Message: </i></b>%s' \

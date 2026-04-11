@@ -127,7 +127,7 @@ def pdf_to_text(pdf_string):
             page.rotate = (page.rotate + 0) % 360
             interpreter.process_page(page)
     except PDFSyntaxError:
-        return u''
+        return ''
     
     device.close()
     output.seek(0)

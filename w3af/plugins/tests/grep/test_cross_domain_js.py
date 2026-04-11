@@ -121,14 +121,14 @@ class TestCrossDomainJSRaw(unittest.TestCase):
         self.plugin.grep(request, resp_2)
         self.plugin.end()
 
-        expected_desc = u'The application contains 2 different URLs with a' \
-                        u' script tag which includes JavaScript source from' \
-                        u' the potentially insecure "cdn.akamai-wannabe.net"' \
-                        u' third party site. This practice is not recommended' \
-                        u' because it delegates the security of the site to' \
-                        u' an external entity. The first two vulnerable URLs' \
-                        u' are:\n - http://www.w3af.com/2\n' \
-                        u' - http://www.w3af.com/1\n'
+        expected_desc = 'The application contains 2 different URLs with a' \
+                        ' script tag which includes JavaScript source from' \
+                        ' the potentially insecure "cdn.akamai-wannabe.net"' \
+                        ' third party site. This practice is not recommended' \
+                        ' because it delegates the security of the site to' \
+                        ' an external entity. The first two vulnerable URLs' \
+                        ' are:\n - http://www.w3af.com/2\n' \
+                        ' - http://www.w3af.com/1\n'
 
         # pylint: disable=E1103
         info_set = kb.kb.get_one('cross_domain_js', 'cross_domain_js')

@@ -46,7 +46,7 @@ Content-Type: application/x-www-form-urlencoded
 class TestManualRequests(XpresserUnittest):
     
     IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'manual_requests', 'images')
-    EXTRA_IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'tools_menu', 'images')
+    EXTRA_IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'tools_men', 'images')
     
     def setUp(self):
         XpresserUnittest.setUp(self)
@@ -123,7 +123,7 @@ class TestManualRequests(XpresserUnittest):
         self.assertEqual(http_request.get_url().get_path(), request.path)
         self.assertEqual(http_request.get_method(), request.command)
         
-        for header_name, header_value in http_request.get_headers().iteritems():
+        for header_name, header_value in http_request.get_headers().items():
             self.assertIn(header_name.lower(), request.headers)
             self.assertEqual(header_value, request.headers[header_name.lower()])
             
@@ -175,7 +175,7 @@ class TestManualRequests(XpresserUnittest):
         self.assertEqual(http_request.get_url().get_path(), request.path)
         self.assertEqual('POST', request.command)
         
-        for header_name, header_value in http_request.get_headers().iteritems():
+        for header_name, header_value in http_request.get_headers().items():
             self.assertIn(header_name.lower(), request.headers)
             self.assertEqual(header_value, request.headers[header_name.lower()])
         

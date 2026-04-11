@@ -73,14 +73,14 @@ class running_vm(Payload):
                     break
 
             content_lower = content.lower()
-            for vm_engine in ('vmware', 'qemu', 'virtualbox', 'bochs'):
+            for vm_engine in ('vmware', 'qem', 'virtualbox', 'bochs'):
                 if vm_engine in content_lower:
                     result['running_vm'] = True
                     break
 
         kernel_modules = self.exec_payload('list_kernel_modules').keys()
         str_kernel_modules = str(kernel_modules).lower()
-        for vm_engine in ('vmware', 'qemu', 'virtualbox', 'bochs'):
+        for vm_engine in ('vmware', 'qem', 'virtualbox', 'bochs'):
             if vm_engine in str_kernel_modules:
                 result['running_vm'] = True
                 break

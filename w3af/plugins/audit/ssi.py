@@ -173,7 +173,7 @@ class ssi(AuditPlugin):
         # this code to use:
         #
         #   len(self._expected_mutant_dict)
-        #   self._expected_mutant_dict.iterkeys()
+        #   self._expected_mutant_dict.keys()
         #
         # Those two methods are faster and consume less memory than the things
         # I'm doing below now.

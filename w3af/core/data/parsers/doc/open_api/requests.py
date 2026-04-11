@@ -130,15 +130,15 @@ class RequestFactory(object):
         """
         An example request dict from swagger's pet store application looks like:
 
-        {'url': u'http://petstore.swagger.io/v2/pet/42',
+        {'url': 'http://petstore.swagger.io/v2/pet/42',
          'headers': {},
          'params': {},
          'method': 'DELETE'}
 
         Or also like:
 
-        {'url': u'http://petstore.swagger.io/v2/pet/42',
-         'headers': {u'api_key': 'FrAmE30.'},
+        {'url': 'http://petstore.swagger.io/v2/pet/42',
+         'headers': {'api_key': 'FrAmE30.'},
          'params': {},
          'method': 'DELETE'}
 
@@ -151,7 +151,7 @@ class RequestFactory(object):
                                  **parameters)
 
     def _get_filled_parameters(self):
-        return dict((name, value.fill) for (name, value) in self.parameters.iteritems())
+        return dict((name, value.fill) for (name, value) in self.parameters.items())
 
     def get_method(self):
         """
@@ -171,7 +171,7 @@ class RequestFactory(object):
         parameters = self._get_filled_parameters()
 
         # We only send in the body the parameters that belong there
-        for param_name, param_def in self.operation.params.iteritems():
+        for param_name, param_def in self.operation.params.items():
             if param_def.location != 'query':
                 parameters.pop(param_name)
 
@@ -179,7 +179,7 @@ class RequestFactory(object):
         # TODO: Handle collectionFormat from the param_spec to know if
         #       we should send comma separated (csv) or multiple
         #       parameters with the same name and different values
-        for param_name, param_def in self.operation.params.iteritems():
+        for param_name, param_def in self.operation.params.items():
             if 'type' not in param_def.param_spec:
                 continue
 
@@ -281,7 +281,7 @@ class RequestFactory(object):
         parameters = self._get_filled_parameters()
 
         # We only send in the body the parameters that belong there
-        for param_name, param_def in self.operation.params.iteritems():
+        for param_name, param_def in self.operation.params.items():
             if param_def.location != 'body':
                 parameters.pop(param_name)
 

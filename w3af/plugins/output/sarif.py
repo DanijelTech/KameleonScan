@@ -79,7 +79,7 @@ class sarif(OutputPlugin):
         opt.add(o)
         
         o = opt_factory('pretty_print', True,
-                       'Pretty print JSON output',
+                       'Pretty print(JSON) output',
                        'BOOL', 'PRETTY_PRINT')
         opt.add(o)
         
@@ -141,13 +141,14 @@ class sarif(OutputPlugin):
         result = self._convert_vuln_to_result(vuln)
         self._results.append(result)
     
-    def add_filter(self, (filter_msg, filter_type)):
+    def add_filter(self, args):
         """
         This method is called when a message is filtered.
         
         :param filter_msg: The message that was filtered.
         :param filter_type: Filter type.
         """
+        filter_msg, filter_type = args
         pass
     
     def _create_rule(self, plugin_name, vuln):
@@ -375,7 +376,7 @@ class sarif(OutputPlugin):
         Output Options:
         - output_file: Path to save SARIF file
         - include_passed: Include passed checks
-        - pretty_print: Pretty print JSON
+        - pretty_print: Pretty print(JSON)
         - source_language: Source language for results
         - git_repo_url: Repository URL for linking
         - git_branch: Branch name for version control

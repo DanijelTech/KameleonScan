@@ -400,7 +400,7 @@ class HTTPResponse(DiskItem):
         if parser is not None:
             return parser.get_clear_text_body()
 
-        return u''
+        return ''
 
     def get_parser(self):
         """
@@ -516,7 +516,7 @@ class HTTPResponse(DiskItem):
 
         The only thing that changes is the header name.
         """
-        return Headers([(k.lower(), v) for k, v in self.headers.iteritems()])
+        return Headers([(k.lower(), v) for k, v in self.headers.items()])
 
     def set_url(self, url):
         """
@@ -835,5 +835,5 @@ class HTTPResponse(DiskItem):
         return state
     
     def __setstate__(self, state):
-        [setattr(self, k, v) for k, v in state.iteritems()]
+        [setattr(self, k, v) for k, v in state.items()]
         self._body_lock = threading.RLock()

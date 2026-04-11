@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 """
 from cookielib import MozillaCookieJar
-from urllib2 import HTTPCookieProcessor
+from urllib.request import HTTPCookieProcessor
 
 
 class CookieHandler(HTTPCookieProcessor):
@@ -60,7 +60,7 @@ class CookieHandler(HTTPCookieProcessor):
         Clear the cookies from all cookie jars.
         :return: None
         """
-        for cookiejar in self.jars.itervalues():
+        for cookiejar in self.jars.values():
             cookiejar.clear()
             cookiejar.clear_session_cookies()
 

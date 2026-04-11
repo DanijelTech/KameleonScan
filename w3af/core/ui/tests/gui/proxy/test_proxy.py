@@ -31,7 +31,7 @@ from w3af.core.data.url.tests.helpers.http_daemon import HTTPDaemon
 class TestProxy(XpresserUnittest):
     
     IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'proxy', 'images')
-    EXTRA_IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'tools_menu', 'images')
+    EXTRA_IMAGES = os.path.join(GUI_TEST_ROOT_PATH, 'tools_men', 'images')
     
     def setUp(self):
         XpresserUnittest.setUp(self)

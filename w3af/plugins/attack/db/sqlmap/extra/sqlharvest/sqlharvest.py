@@ -11,7 +11,7 @@ import socket
 import sys
 import urllib
 import urllib2
-import ConfigParser
+import configparser
 
 from operator import itemgetter
 
@@ -75,8 +75,8 @@ def main():
             except KeyboardInterrupt:
                 raise
 
-            except Exception, msg:
-                print msg
+            except Exception as msg:
+                print(msg)
 
             if abort:
                 break
@@ -86,7 +86,7 @@ def main():
             sys.stdout.write("---------------\n")
 
             for sqlfile in files:
-                print sqlfile
+                print(sqlfile)
 
                 try:
                     req = urllib2.Request(sqlfile)
@@ -118,8 +118,8 @@ def main():
                 except KeyboardInterrupt:
                     raise
 
-                except Exception, msg:
-                    print msg
+                except Exception as msg:
+                    print(msg)
 
             else:
                 i += 1

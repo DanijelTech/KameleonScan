@@ -69,10 +69,10 @@ class TestToken(unittest.TestCase):
         self.assertRaises(UnicodeDecodeError, unicode, token)
 
         encoded_token = smart_unicode(token)
-        self.assertEqual(encoded_token, u'\xf3')
+        self.assertEqual(encoded_token, '\xf3')
 
     def test_unicodeencodeerror(self):
-        _unicode = u'í'
+        _unicode = 'í'
         token = DataToken(self.NAME, _unicode, self.PATH)
 
         self.assertEqual(str(token), 'í')

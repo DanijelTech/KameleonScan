@@ -114,7 +114,7 @@ class response_splitting(AuditPlugin):
         """
         headers = response.get_headers()
 
-        for header, value in headers.iteritems():
+        for header, value in headers.items():
             if HEADER_NAME not in header.lower():
                 continue
 

@@ -52,7 +52,7 @@ class TestDCFactory(unittest.TestCase):
 
         dc = dc_from_hdrs_post(headers, post_data)
 
-        EXPECTED_PARAMS = [u'ax']
+        EXPECTED_PARAMS = ['ax']
 
         self.assertIsInstance(dc, MultipartContainer)
         self.assertEqual(dc.get_param_names(), EXPECTED_PARAMS)
@@ -61,8 +61,8 @@ class TestDCFactory(unittest.TestCase):
         headers = self.get_headers('application/json')
         dc = dc_from_hdrs_post(headers, COMPLEX_OBJECT)
 
-        EXPECTED_PARAMS = [u'object-second_key-list-0-string',
-                           u'object-key-string']
+        EXPECTED_PARAMS = ['object-second_key-list-0-string',
+                           'object-key-string']
 
         self.assertIsInstance(dc, JSONContainer)
         self.assertEqual(dc.get_param_names(), EXPECTED_PARAMS)

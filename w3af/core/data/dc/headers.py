@@ -70,7 +70,7 @@ class Headers(NonRepeatKeyValueContainer):
         """
         :return: A dictionary with lower-case key-headers and un-modified values
         """
-        return dict([(k.lower(), v) for k, v in self.iteritems()])
+        return dict([(k.lower(), v) for k, v in self.items()])
 
     def clean_values(self, init_val):
         if isinstance(init_val, NonRepeatKeyValueContainer)\
@@ -112,7 +112,7 @@ class Headers(NonRepeatKeyValueContainer):
         lower = string.lower
         lower_header_name = lower(header_name)
 
-        for stored_header_name, value in self.iteritems():
+        for stored_header_name, value in self.items():
             if lower_header_name == lower(stored_header_name):
                 return value, stored_header_name
 
@@ -175,7 +175,7 @@ class Headers(NonRepeatKeyValueContainer):
         
             >>> from email.header import Header
             >>> h = Header()
-            >>> h.append(u'á')
+            >>> h.append('á')
             >>> h.encode()
             '=?utf-8?b?w4PCoQ==?='
  
@@ -196,9 +196,9 @@ class Headers(NonRepeatKeyValueContainer):
         
         :return: string representation of the Headers() object.
         """
-        header_str_unicode = self._to_str_with_separators(u': ', u'\r\n')
+        header_str_unicode = self._to_str_with_separators(': ', '\r\n')
         if header_str_unicode:
-            header_str_unicode += u'\r\n'
+            header_str_unicode += '\r\n'
 
         return header_str_unicode.encode('utf-8')
 
@@ -206,7 +206,7 @@ class Headers(NonRepeatKeyValueContainer):
         """
         :see: __str__ documentation.
         """
-        headers_unicode = self._to_str_with_separators(u': ', u'\r\n')
+        headers_unicode = self._to_str_with_separators(': ', '\r\n')
         if headers_unicode:
-            headers_unicode += u'\r\n'
+            headers_unicode += '\r\n'
         return headers_unicode

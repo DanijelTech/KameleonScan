@@ -277,7 +277,7 @@ class FormParameters(OrderedDict):
         """
         file_keys = set()
 
-        for k, v_lst in self.meta.iteritems():
+        for k, v_lst in self.meta.items():
             for v in v_lst:
                 if isinstance(v, FileFormField):
                     file_keys.add(k)
@@ -411,7 +411,7 @@ class FormParameters(OrderedDict):
     def get_option_names(self):
         option_names = []
 
-        for form_field_list in self.meta.itervalues():
+        for form_field_list in self.meta.values():
             for form_field in form_field_list:
                 if form_field.input_type in self.OPTION_MATRIX_FORM_TYPES:
                     option_names.append(form_field.name)
@@ -421,7 +421,7 @@ class FormParameters(OrderedDict):
     def get_option_matrix(self):
         option_matrix = []
 
-        for form_field_list in self.meta.itervalues():
+        for form_field_list in self.meta.values():
             for form_field in form_field_list:
                 if form_field.input_type in self.OPTION_MATRIX_FORM_TYPES:
                     option_matrix.append(form_field.values)
@@ -614,7 +614,7 @@ class FormParameters(OrderedDict):
         items = []
 
         # pylint: disable=E1133
-        for key, value_list in self.iteritems():
+        for key, value_list in self.items():
             for value in value_list:
                 kv = "'%s': '%s'" % (key, value)
                 items.append(kv)
@@ -631,7 +631,7 @@ class FormParameters(OrderedDict):
         #
         # Count the parameter types
         #
-        for form_field_list in self.meta.itervalues():
+        for form_field_list in self.meta.values():
             for form_field in form_field_list:
 
                 if form_field.input_type == INPUT_TYPE_PASSWD:

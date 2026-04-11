@@ -38,10 +38,10 @@ def safecharencode(value):
     """
     Returns safe representation of a given basestring value
 
-    >>> safecharencode(u'test123')
-    u'test123'
-    >>> safecharencode(u'test\x01\x02\xff')
-    u'test\\01\\02\\03\\ff'
+    >>> safecharencode('test123')
+    'test123'
+    >>> safecharencode('test\x01\x02\xff')
+    'test\\01\\02\\03\\ff'
     """
 
     retVal = value
@@ -108,11 +108,11 @@ def main():
         if not args.inputFile:
             parser.error('Missing the input file, -h for help')
 
-    except (OptionError, TypeError), e:
+    except (OptionError, TypeError) as e:
         parser.error(e)
 
     if not os.path.isfile(args.inputFile):
-        print 'ERROR: the provided input file \'%s\' is not a regular file' % args.inputFile
+        print('ERROR: the provided input file %s is not a regular file' % args.inputFile)
         sys.exit(1)
 
     f = open(args.inputFile, 'r')

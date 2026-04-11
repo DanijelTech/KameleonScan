@@ -50,7 +50,7 @@ def get_total_http_requests(scan_log_filename, scan):
             else:
                 urls[url] = 1
 
-    total = sum(count.itervalues())
+    total = sum(count.values())
 
     output = ListOutput('http_requests')
     output.append(ListOutputItem('Total HTTP requests sent', total))

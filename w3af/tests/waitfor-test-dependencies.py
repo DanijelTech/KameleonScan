@@ -26,9 +26,9 @@ TEST_DEPENDENCIES = [('http://127.0.0.1:8000', None),
 def is_online(url, match_string):
     try:
         content = urllib2.urlopen(url).read()
-    except urllib2.HTTPError, e:
+    except urllib2.HTTPError as e:
         content = e.read()
-    except Exception, e:
+    except Exception as e:
         print('%s is offline (%s)' % (url, e.__class__.__name__))
         return False
 
@@ -85,7 +85,7 @@ def wait_until_stable():
 
     up_count_summary = []
 
-    for up_count in test_results.itervalues():
+    for up_count in test_results.values():
         up_count_summary.append(up_count >= STABLE_LOOPS)
 
     if not all(up_count_summary):

@@ -7,41 +7,41 @@ class md5(object):
     def __init__(self, value=None):
         pass
     def hexdigest(self):
-        return u''
+        return ''
     def update(self, x):
-        return u''
+        return ''
     def digest(self):
-        return u''
+        return ''
 
 class sha1(object):
     def __init__(self, value=None):
         pass
     def hexdigest(self):
-        return u''
+        return ''
     def update(self, x):
-        return u''
+        return ''
     def digest(self):
-        return u''
+        return ''
 
 class sha512(object):
     def __init__(self, value=None):
         pass
     def hexdigest(self):
-        return u''
+        return ''
     def update(self, x):
-        return u''
+        return ''
     def digest(self):
-        return u''
+        return ''
 
 class sha256(object):
     def __init__(self, value=None):
         pass
     def hexdigest(self):
-        return u''
+        return ''
     def update(self, x):
-        return u''
+        return ''
     def digest(self):
-        return u''
+        return ''
 """
 
 

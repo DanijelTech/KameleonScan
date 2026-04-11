@@ -127,7 +127,8 @@ class php_eggs(InfrastructurePlugin):
         HTTP GET the URLs for PHP Eggs
         :return: A list with the HTTP response objects
         """
-        def http_get(fuzzable_request, (egg_url, egg_desc)):
+        def http_get(fuzzable_request, egg_info):
+            egg_url, egg_desc = egg_info
             egg_url = fuzzable_request.get_url().uri2url().url_join(egg_url)
             response = self._uri_opener.GET(egg_url, cache=True, grep=False)
             return response, egg_url, egg_desc

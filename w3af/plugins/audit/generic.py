@@ -112,31 +112,31 @@ class generic(AuditPlugin):
         """
         # This is the reduced payload set which is effective in triggering
         # most of the errors you'll find
-        payloads = [u'1/0',
-                    u'Ω≈ç√∫˜µ≤≥÷',
-                    u'<>?:"{}|_+\',./;\'[]\\-=',
-                    u'%*.*s',
-                    u'']
+        payloads = ['1/0',
+                    'Ω≈ç√∫˜µ≤≥÷',
+                    '<>?:"{}|_+\',./;\'[]\\-=',
+                    '%*.*s',
+                    '']
 
         # Add more payloads if the user wants to perform a detailed scan
         if self._extensive:
-            payloads += [u'undefined',
-                         u'undef',
-                         u'null',
-                         u'NULL',
-                         u'nil',
-                         u'NIL',
-                         u'true',
-                         u'false',
-                         u'True',
-                         u'False',
-                         u'None',
-                         u'-1',
-                         u'0.0/0',
-                         u'NaN',
-                         u'Infinity',
-                         u"$ENV{'HOME'}",
-                         u'00˙Ɩ$-',
+            payloads += ['undefined',
+                         'undef',
+                         'null',
+                         'NULL',
+                         'nil',
+                         'NIL',
+                         'true',
+                         'false',
+                         'True',
+                         'False',
+                         'None',
+                         '-1',
+                         '0.0/0',
+                         'NaN',
+                         'Infinity',
+                         "$ENV{'HOME'}",
+                         '00˙Ɩ$-',
                          ]
 
         return set(payloads)

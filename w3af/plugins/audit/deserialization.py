@@ -174,7 +174,8 @@ class deserialization(AuditPlugin):
                     json_str = file(os.path.join(root, file_name)).read()
                     yield language, json.loads(json_str)
 
-    def _find_delay_in_mutant(self, (mutant, delay_obj), debugging_id=None):
+    def _find_delay_in_mutant(self, args, debugging_id=None):
+        mutant, delay_obj = args
         """
         Try to delay the response and save a vulnerability if successful
 

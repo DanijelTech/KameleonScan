@@ -96,7 +96,7 @@ class NonRepeatKeyValueContainer(DataContainer, OrderedDict):
 
         # pylint: disable=E1133
         for k, v in self.items():
-            to_app = u'%s%s%s' % (k, key_val_sep,
+            to_app = '%s%s%s' % (k, key_val_sep,
                                   smart_unicode(v, encoding=UTF8))
             lst.append(to_app)
         # pylint: enable=E1133
@@ -129,7 +129,7 @@ class NonRepeatKeyValueContainer(DataContainer, OrderedDict):
         """
         Return unicode representation
         """
-        return self._to_str_with_separators(u'=', u'&')
+        return self._to_str_with_separators('=', '&')
 
     def get_short_printable_repr(self):
         """

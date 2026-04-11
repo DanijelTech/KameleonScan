@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # This module is a collection of useful code snippets for the GTK gui
 
 import threading
-import Queue
+import queue
 import textwrap
 import gtk
 import os
@@ -203,7 +203,7 @@ class _Wrapper(object):
         """Apply the wrap."""
         try:
             return func(*args, **kwargs)
-        except Exception, err:
+        except Exception as err:
             if isinstance(err, self.friendly):
                 FriendlyExceptionDlg(str(err))
             raise
@@ -320,7 +320,7 @@ event_types = [i for i in vars(gtk.gdk).values() if type(i)
 def debugHandler(widget, event, *a):
     """Just connect it to the 'event' event."""
     if event.type in event_types:
-        print event.type.value_nick
+        print(event.type.value_nick)
 
 
 class Throbber(gtk.ToolButton):
@@ -484,7 +484,7 @@ class DrawingAreaStringRepresentation(gtk.DrawingArea):
             #
             #    Draw
             #
-            for index, value in self.str_repr.iteritems():
+            for index, value in self.str_repr.items():
                 for i in xrange(value):
                     self.window.draw_point(gc, index, self.height - i)
 

@@ -103,9 +103,9 @@ class shell_shock(AuditPlugin):
         header_value, header_name = response.get_headers().iget(injected_header)
 
         if header_value is not None and injected_value in header_value.lower():
-            desc = u'Shell shock was found at: %s' % mutant.found_at()
+            desc = 'Shell shock was found at: %s' % mutant.found_at()
 
-            v = Vuln.from_mutant(u'Shell shock vulnerability', desc,
+            v = Vuln.from_mutant('Shell shock vulnerability', desc,
                                  severity.HIGH, [response.id],
                                  self.get_name(), mutant)
 
@@ -150,7 +150,8 @@ class shell_shock(AuditPlugin):
             mutant = self.create_mutant(freq, TEST_HEADER)
             yield mutant, delay_obj, debugging_id
 
-    def _find_delay_in_mutant(self, (mutant, delay_obj, debugging_id)):
+    def _find_delay_in_mutant(self, args):
+        mutant, delay_obj, debugging_id = args
         """
         Try to delay the response and save a vulnerability if successful
 
@@ -166,9 +167,9 @@ class shell_shock(AuditPlugin):
             return False
 
         mutant.set_token_value(delay_obj.get_string_for_delay(3))
-        desc = u'Shell shock was found at: %s' % mutant.found_at()
+        desc = 'Shell shock was found at: %s' % mutant.found_at()
 
-        v = Vuln.from_mutant(u'Shell shock vulnerability', desc,
+        v = Vuln.from_mutant('Shell shock vulnerability', desc,
                              severity.HIGH, [r.id for r in responses],
                              self.get_name(), mutant)
 

@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 import os
 import ssl
 import time
-import Queue
+import queue
 import types
 import unittest
 import SocketServer
@@ -167,7 +167,7 @@ class TestXUrllib(unittest.TestCase):
 
     def test_post_special_chars(self):
         url = URL(get_moth_http('/audit/xss/simple_xss_form.py'))
-        test_data = u'abc<def>"-á-'
+        test_data = 'abc<def>"-á-'
 
         data = URLEncodedForm()
         data['text'] = [test_data]
@@ -199,7 +199,7 @@ class TestXUrllib(unittest.TestCase):
 
         try:
             self.uri_opener.GET(url)
-        except HTTPRequestException, hre:
+        except HTTPRequestException as hre:
             self.assertEqual(hre.value, "Bad HTTP response status line: ''")
         else:
             self.assertTrue(False, 'Expected HTTPRequestException.')
@@ -222,10 +222,10 @@ class TestXUrllib(unittest.TestCase):
                 self.uri_opener.GET(url)
             except HTTPRequestException:
                 http_request_e += 1
-            except ScanMustStopException, smse:
+            except ScanMustStopException as smse:
                 scan_must_stop_e += 1
                 break
-            except Exception, e:
+            except Exception as e:
                 msg = 'Not expecting "%s".'
                 self.assertTrue(False, msg % e.__class__.__name__)
 
@@ -408,7 +408,7 @@ class TestXUrllib(unittest.TestCase):
     
     def test_special_char_header(self):
         url = URL(get_moth_http('/core/headers/echo-headers.py'))
-        header_content = u'name=ábc'
+        header_content = 'name=ábc'
         headers = Headers([('Cookie', header_content)])
         http_response = self.uri_opener.GET(url, cache=False, headers=headers)
         self.assertIn(header_content, http_response.body)

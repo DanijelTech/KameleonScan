@@ -70,7 +70,7 @@ class EditWindow(gtk.Window):
     def create_menu(self):
         ui_string = """<ui>
         <menubar>
-            <menu name='FileMenu' action='FileMenu'>
+            <menu name='FileMen' action='FileMenu'>
                 <menuitem action='FileNew'/>
                 <menuitem action='FileOpen'/>
                 <menuitem action='FileSave'/>
@@ -78,7 +78,7 @@ class EditWindow(gtk.Window):
                 <separator/>
                 <menuitem action='FileExit'/>
             </menu>
-            <menu name='EditMenu' action='EditMenu'>
+            <menu name='EditMen' action='EditMenu'>
                 <menuitem action='EditCut'/>
                 <menuitem action='EditCopy'/>
                 <menuitem action='EditPaste'/>
@@ -88,7 +88,7 @@ class EditWindow(gtk.Window):
                 <menuitem action='EditFindNext'/>
             </menu>
             <placeholder name='OtherMenus'/>
-            <menu name='HelpMenu' action='HelpMenu'>
+            <menu name='HelpMen' action='HelpMenu'>
                 <menuitem action='HelpAbout'/>
             </menu>
         </menubar>
@@ -106,14 +106,14 @@ class EditWindow(gtk.Window):
         </ui>
         """
         actions = [
-            ('FileMenu', None, '_File'),
+            ('FileMen', None, '_File'),
             ('FileNew', gtk.STOCK_NEW, None, None, None, self.file_new),
             ('FileOpen', gtk.STOCK_OPEN, None, None, None, self.file_open),
             ('FileSave', gtk.STOCK_SAVE, None, None, None, self.file_save),
             ('FileSaveAs', gtk.STOCK_SAVE_AS, None, None, None,
              self.file_saveas),
             ('FileExit', gtk.STOCK_QUIT, None, None, None, self.file_exit),
-            ('EditMenu', None, '_Edit'),
+            ('EditMen', None, '_Edit'),
             ('EditCut', gtk.STOCK_CUT, None, None, None, self.edit_cut),
             ('EditCopy', gtk.STOCK_COPY, None, None, None, self.edit_copy),
             ('EditPaste', gtk.STOCK_PASTE, None, None, None, self.edit_paste),

@@ -230,7 +230,7 @@ def create_simple_fuzzable_request(unique_id):
     unique_id = str(unique_id)
 
     url = URL('http://w3af.com/')
-    headers = Headers([(u'Hello', u'World')])
+    headers = Headers([('Hello', 'World')])
     post_data = KeyValueContainer(init_val=[('a', [unique_id])])
 
     return FuzzableRequest(url,

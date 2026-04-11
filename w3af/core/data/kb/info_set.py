@@ -228,7 +228,7 @@ class InfoSet(object):
         references = None
         owasp_top_10_references = None
 
-        for k, v in self.first_info.iteritems():
+        for k, v in self.first_info.items():
             attributes[str(k)] = str(v)
 
         if self.has_db_details():

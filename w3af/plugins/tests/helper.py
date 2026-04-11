@@ -89,7 +89,7 @@ class PluginTest(unittest.TestCase):
             
             try:
                 url = URL(self.target_url)
-            except ValueError, ve:
+            except ValueError as ve:
                 msg = ('When using MOCK_RESPONSES you need to set the'
                        ' target_url attribute to a valid URL, exception was:'
                        ' "%s".')
@@ -226,7 +226,7 @@ class PluginTest(unittest.TestCase):
             try:
                 response = urllib2.urlopen(target.url_string)
                 response.read()
-            except urllib2.URLError, e:
+            except urllib2.URLError as e:
                 if hasattr(e, 'code'):
                     # pylint: disable=E1101
                     if e.code in (404, 403, 401):
@@ -238,7 +238,7 @@ class PluginTest(unittest.TestCase):
 
                 self.assertTrue(False, msg % (target, e.reason))
             
-            except Exception, e:
+            except Exception as e:
                 self.assertTrue(False, msg % (target, e))
 
     def _scan(self,
@@ -325,7 +325,7 @@ class PluginTest(unittest.TestCase):
 
         options = self.misc_settings.get_options()
 
-        for setting, value in misc_settings.iteritems():
+        for setting, value in misc_settings.items():
             options[setting].set_value(value)
 
         self.misc_settings.set_options(options)
@@ -391,7 +391,7 @@ class PluginTest(unittest.TestCase):
             if should_continue:
                 continue
 
-            if path == u'':
+            if path == '':
                 continue
 
             if path in ok_to_miss:

@@ -94,7 +94,7 @@ class PhpSCA(object):
         # Code AST
         try:
             self._ast_code = parser.parse(code, lexer=lexer)
-        except SyntaxError, se:
+        except SyntaxError as se:
             raise CodeSyntaxError("Error while parsing the code")
 
         # Convenient definition of new node type
@@ -212,7 +212,7 @@ class PhpSCA(object):
 
         # Debug it?
         if self.debugmode and newobj:
-            print newobj
+            print(newobj)
 
         return stoponthis
 
@@ -505,7 +505,7 @@ class FuncCall(NodeRep):
 
         :param fname: Function name
         """
-        for vulnty, pvfnames in FuncCall.PVFDB.iteritems():
+        for vulnty, pvfnames in FuncCall.PVFDB.items():
             if any(fname == pvfn for pvfn in pvfnames):
                 return vulnty
         return None
@@ -517,7 +517,7 @@ class FuncCall(NodeRep):
 
         :param sfname: Securing function name
         """
-        for vulnty, sfnames in FuncCall.SFDB.iteritems():
+        for vulnty, sfnames in FuncCall.SFDB.items():
             if any(sfname == sfn for sfn in sfnames):
                 return vulnty
         return None

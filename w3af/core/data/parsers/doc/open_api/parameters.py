@@ -40,8 +40,8 @@ class ParameterHandler(object):
                               'integer': 42,
                               'float': 4.2,
                               'double': 4.2,
-                              'date': datetime.date(2017, 06, 30),
-                              'date-time': datetime.datetime(2017, 06, 30, 23, 59, 45),
+                              'date': datetime.date(2017, 6, 30),
+                              'date-time': datetime.datetime(2017, 6, 30, 23, 59, 45),
                               'boolean': True}
 
     def __init__(self, spec, operation):
@@ -68,7 +68,7 @@ class ParameterHandler(object):
                                         self.operation.http_method,
                                         self.operation.op_spec)
 
-        for parameter_name, parameter in operation.params.iteritems():
+        for parameter_name, parameter in operation.params.items():
             # We make sure that all parameters have a fill attribute
             parameter.fill = None
 
@@ -83,7 +83,7 @@ class ParameterHandler(object):
         """
         :return: True if the operation has optional parameters
         """
-        for parameter_name, parameter in self.operation.params.iteritems():
+        for parameter_name, parameter in self.operation.params.items():
             if not parameter.required:
                 return True
 
@@ -123,7 +123,7 @@ class ParameterHandler(object):
 
         :return: None
         """
-        for parameter_name, parameter in self.operation.params.iteritems():
+        for parameter_name, parameter in self.operation.params.items():
 
             param_format = parameter.param_spec.get('format', None)
             param_type = parameter.param_spec.get('type', None)
@@ -155,7 +155,7 @@ class ParameterHandler(object):
         """
         invalid_formats = ['int32', 'int64', 'float', 'double', '']
 
-        for parameter_name, parameter in self.operation.params.iteritems():
+        for parameter_name, parameter in self.operation.params.items():
 
             param_format = parameter.param_spec.get('format', None)
             param_type = parameter.param_spec.get('type', None)
@@ -187,7 +187,7 @@ class ParameterHandler(object):
         """
         fix_formats = ['double', 'float', 'int32', 'int64']
 
-        for parameter_name, parameter in self.operation.params.iteritems():
+        for parameter_name, parameter in self.operation.params.items():
 
             param_format = parameter.param_spec.get('format', None)
             param_default = parameter.param_spec.get('default', None)
@@ -227,7 +227,7 @@ class ParameterHandler(object):
         """
         fix_formats = ['double', 'float', 'int32', 'int64']
 
-        for parameter_name, parameter in self.operation.params.iteritems():
+        for parameter_name, parameter in self.operation.params.items():
 
             param_format = parameter.param_spec.get('format', None)
             param_example = parameter.param_spec.get('example', None)
@@ -414,24 +414,24 @@ class ParameterHandler(object):
         # returning [some-primitive-type]. For example it might
         # look like this:
         #
-        #     u'photoUrls': {u'items': {u'type': u'string'},
-        #                    u'type': u'array',
+        #     'photoUrls': {'items': {'type': 'string'},
+        #                    'type': 'array',
         #
         # Where this is completely valid: ['http://abc/']
         #
         # Or like this:
         #
-        #     u'ids': {u'items': {u'type': u'int32'},
-        #              u'type': u'array',
+        #     'ids': {'items': {'type': 'int32'},
+        #              'type': 'array',
         #
         # Where we need to fill with integers: [1, 3, 4]
         #
         # Or even worse... there is a model in the array:
         #
-        #     u'tags': {u'items': {u'$ref': u'#/definitions/Tag',
-        #                           'x-scope': [u'http://moth/swagger.json',
-        #                                      u'http://moth/swagger.json#/definitions/Pet']},
-        #               u'type': u'array',
+        #     'tags': {'items': {'$ref': '#/definitions/Tag',
+        #                           'x-scope': ['http://moth/swagger.json',
+        #                                      'http://moth/swagger.json#/definitions/Pet']},
+        #               'type': 'array',
         #
         # And we need to fill the array with one or more tags
         #
@@ -485,11 +485,11 @@ class ParameterHandler(object):
 
         The output of this method looks like:
 
-                {u'title': u'Pet',
-                 u'x-model': u'Pet',
-                 u'type': u'object',
-                 u'properties': {u'age': {u'type': u'integer', u'format': u'int32'}},
-                 u'required': [u'name']}
+                {'title': 'Pet',
+                 'x-model': 'Pet',
+                 'type': 'object',
+                 'properties': {'age': {'type': 'integer', 'format': 'int32'}},
+                 'required': ['name']}
 
         :param all_parts: A list containing the `allOf`
         :return: The definition as shown above
@@ -516,7 +516,7 @@ class ParameterHandler(object):
                     merged['required'].append(required)
 
             if 'properties' in object_definition:
-                for property_name, property_def in object_definition['properties'].iteritems():
+                for property_name, property_def in object_definition['properties'].items():
                     merged['properties'][property_name] = property_def
 
         return merged
@@ -543,23 +543,23 @@ class ParameterHandler(object):
             else:
                 # The definition is not a reference, the param_spec['schema'] looks like:
                 #
-                # {u'title': u'Pet',
-                #  u'x-model': u'Pet',
-                #  u'type': u'object',
-                #  u'properties': {u'age': {u'type': u'integer', u'format': u'int32'}},
-                #  u'required': [u'name']}
+                # {'title': 'Pet',
+                #  'x-model': 'Pet',
+                #  'type': 'object',
+                #  'properties': {'age': {'type': 'integer', 'format': 'int32'}},
+                #  'required': ['name']}
                 param_spec = param_spec['schema']
 
         if 'type' in param_spec:
             if param_spec['type'] == 'object':
                 # In this case the param_spec holds these values:
                 #
-                # {u'x-model': u'Pet Owner',
-                #  u'name': u'owner',
-                #  u'title': u'Pet Owner',
-                #  u'required': [u'name'],
-                #  u'type': u'object',
-                #  u'properties': '...'}
+                # {'x-model': 'Pet Owner',
+                #  'name': 'owner',
+                #  'title': 'Pet Owner',
+                #  'required': ['name'],
+                #  'type': 'object',
+                #  'properties': '...'}
                 pass
 
         return param_spec
@@ -570,11 +570,11 @@ class ParameterHandler(object):
 
         The output of swagger_spec.deref looks like:
 
-        {u'required': [u'name'],
-         u'type': u'object',
-         u'properties': {u'tag': {u'type': u'string'},
-                         u'name': {u'type': u'string'}},
-         u'x-model': u'http:....www.w3af.com..swagger.json|..definitions..Pet'}
+        {'required': ['name'],
+         'type': 'object',
+         'properties': {'tag': {'type': 'string'},
+                         'name': {'type': 'string'}},
+         'x-model': 'http:....www.w3af.com..swagger.json|..definitions..Pet'}
 
         :return: A dict containing all the fields specified in properties.
         """
@@ -583,7 +583,7 @@ class ParameterHandler(object):
 
         created_object = {}
 
-        for property_name, property_data in param_spec.get('properties', {}).iteritems():
+        for property_name, property_data in param_spec.get('properties', {}).items():
 
             # This helps us choose a better value for filling the parameter
             if 'name' not in property_data:

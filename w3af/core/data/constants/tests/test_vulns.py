@@ -143,7 +143,7 @@ class TestVulnsConstants(unittest.TestCase):
 
     def test_vulns_dict_points_to_existing_vulndb_data_id(self):
         invalid = []
-        for vuln_name, _id in VULNS.iteritems():
+        for vuln_name, _id in VULNS.items():
             if _id is None:
                 continue
 

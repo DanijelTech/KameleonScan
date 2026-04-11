@@ -98,7 +98,7 @@ class Test404FuzzyStringMatch(unittest.TestCase):
         run_tests = 0
         start = time.time()
 
-        for domain_base, (base, _) in self.not_exists_data.iteritems():
+        for domain_base, (base, _) in self.not_exists_data.items():
             base = self._gunzip(base)
 
             if run_tests == MAX_TESTS:
@@ -109,7 +109,7 @@ class Test404FuzzyStringMatch(unittest.TestCase):
             base_resp = self._create_http_response(domain_base, base, False)
             clean_body_base = get_clean_body(base_resp)
 
-            for domain_test, (ok, _) in self.not_exists_data.iteritems():
+            for domain_test, (ok, _) in self.not_exists_data.items():
                 total += 1
                 ok = self._gunzip(ok)
 
@@ -147,7 +147,7 @@ class Test404FuzzyStringMatch(unittest.TestCase):
         total = 0
         start = time.time()
 
-        for domain, (ok, not_exists) in self.not_exists_data.iteritems():
+        for domain, (ok, not_exists) in self.not_exists_data.items():
             total += 1
             ok = self._gunzip(ok)
             not_exists = self._gunzip(not_exists)
@@ -207,7 +207,7 @@ class Test404FuzzyStringMatch(unittest.TestCase):
         total = 0
         start = time.time()
 
-        for domain, (ok, _) in self.not_exists_data.iteritems():
+        for domain, (ok, _) in self.not_exists_data.items():
             total += 1
 
             ok = self._gunzip(ok)

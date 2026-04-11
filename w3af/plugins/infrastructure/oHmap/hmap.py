@@ -72,7 +72,7 @@ class request(object):
             else:
                 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((HOST, PORT))
-        except Exception, e:
+        except Exception as e:
             msg = 'hmap connection failed to %s:%s. Exception: "%s"'
             args = (HOST, PORT, e)
             raise BaseFrameworkException(msg % args)
@@ -81,7 +81,7 @@ class request(object):
         if useSSL:
             try:
                 s2 = ssl.wrap_socket(s)
-            except Exception, e:
+            except Exception as e:
                 msg = 'hmap SSL connection failed to %s:%s. Exception: "%s"'
                 args = (HOST, PORT, e)
                 raise BaseFrameworkException(msg % args)
@@ -107,7 +107,7 @@ class request(object):
             # Send the "HTTP request" to the socket
             try:
                 s.send(str(self))
-            except Exception, e:
+            except Exception as e:
                 om.out.debug('hmap failed to send data to socket: "%s"' % e)
 
                 # Try again
@@ -134,10 +134,10 @@ class request(object):
 
                     # we were able to read from the socket, append and try again
                     data += temp
-            except KeyboardInterrupt, e:
+            except KeyboardInterrupt as e:
                 raise e
 
-            except socket.sslerror, ssl_err:
+            except socket.sslerror as ssl_err:
                 # When the remote server has no more data to send
                 # It simply closes the remote connection, which raises:
                 # (6, 'TLS/SSL connection has been closed')
@@ -155,7 +155,7 @@ class request(object):
 
                 continue
 
-            except Exception, e:
+            except Exception as e:
                 msg = 'hmap found an exception while reading data from socket: "%s"'
                 om.out.debug(msg % e)
 
@@ -233,18 +233,18 @@ class response(object):
         return self.response_code, self.response_text
 
     def describe(self):
-        print '-' * 70
-        print 'RESPONSE LINE:'
+        print('-') * 70
+        print('RESPONSE LINE:')
         if hasattr(self, 'response_line'):
-            print self.response_line
-        print '-' * 70
-        print 'HEADERS:'
+            print(self.response_line)
+        print('-') * 70
+        print('HEADERS:')
         if hasattr(self, 'headers'):
-            print self.headers
-        print '-' * 70
-        print 'BODY:'
+            print(self.headers)
+        print('-') * 70
+        print('BODY:')
         if hasattr(self, 'body'):
-            print self.body
+            print(self.body)
 
     def has_header(self, name):
         for h in self.headers:
@@ -285,7 +285,7 @@ def get_fingerprint(url, threads):
 
         try:
             result = test(url)
-        except Exception, e:
+        except Exception as e:
             args = (test.__name__, e)
             om.out.debug('[hmap] Test %s raised an exception: "%s"' % args)
             raise
@@ -556,7 +556,7 @@ def find_halfways(ranges):
             continue
         hw = ((smallest_next[0] - largest_previous[0]) / 2) + largest_previous[0]
         if VERBOSE:
-            print largest_previous, hw, smallest_next
+            print(largest_previous), hw, smallest_next
         halfways.append(hw)
 
     return halfways
@@ -696,7 +696,7 @@ def add_characteristic(category, name, value, data_type=None):
 
 def get_characteristics(test_name, res):
     if VERBOSE:
-        print 'processing', test_name
+        print('processing'), test_name
 
     response_code, response_text = res.return_code()
     claimed_servername = res.servername()
@@ -769,13 +769,13 @@ def get_characteristics(test_name, res):
 
 
 def winnow_ordered_list(ordered_list):
-    #print ordered_list
+    #print(ordered_list)
     if len(ordered_list) < 2:
-        #print 'ordered_list too small to look at'
+        #print('ordered_list too small to look at')
         return
 
     ordered_list.sort(lambda a, b: cmp(len(a), len(b)))
-    #print 'sorted order', ordered_list
+    #print('sorted order'), ordered_list
 
     index = 0
     result = []
@@ -783,13 +783,13 @@ def winnow_ordered_list(ordered_list):
         is_ok = 1
         for other in ordered_list[index + 1:]:
             if is_partial_ordered_sublist(elem, other):
-                #print elem,'is sublist of', other
+                #print(elem),'is sublist of', other
                 is_ok = 0
                 break
         if is_ok:
             result.append(elem)
     result.append(ordered_list[-1])
-    #print result
+    #print(result)
     return result
 
 
@@ -804,7 +804,7 @@ def is_partial_ordered_sublist(small, large):
     except ValueError:
         return 0
     postsort = sorted(presort[:])
-    #print presort, postsort
+    #print(presort), postsort
     if -1 in presort or presort != postsort:
         return 0
     return 1
@@ -887,8 +887,8 @@ def find_most_similar(known_servers, subject):
         subject_server_long_url = subject['SEMANTIC']['LONG_URL_RANGES']
         if known_server_long_url == subject_server_long_url:
             matches += 1
-            #print 'LONG_URL_RANGES match', server['LEXICAL']['SERVER_NAME']
-            #print known_server_long_url
+            #print('LONG_URL_RANGES match'), server['LEXICAL']['SERVER_NAME']
+            #print(known_server_long_url)
         else:
             mismatches += 1
 
@@ -898,8 +898,8 @@ def find_most_similar(known_servers, subject):
             'LONG_DEFAULT_RANGES']
         if known_server_long_default == subject_server_long_default:
             matches += 1
-            #print 'LONG_URL_DEFAULT_RANGES match', server['LEXICAL']['SERVER_NAME']
-            #print known_server_long_default
+            #print('LONG_URL_DEFAULT_RANGES match'), server['LEXICAL']['SERVER_NAME']
+            #print(known_server_long_default)
         else:
             mismatches += 1
 
@@ -917,7 +917,7 @@ def find_most_similar(known_servers, subject):
 
 def partial_same_order(list1, list2):
     common = {}
-    #print 'comparing lists: ',list1,list2
+    #print('comparing lists: '),list1,list2
     for x in list1 + list2:
         if x not in common:
             common[x] = 0
@@ -936,7 +936,7 @@ def partial_same_order(list1, list2):
         if i in common_items:
             common2.append(i)
 
-    #print common1,common2
+    #print(common1),common2
     if common1 == []:
         return 0
     elif common1 == common2:
@@ -946,22 +946,20 @@ def partial_same_order(list1, list2):
 
 
 def usage():
-    print """
-hmap is a web server fingerprinter.
-
-hmap [-hpgn] {url | filename}
-
-e.g.
-   hmap http://localhost:82
-
-   hmap -p www.somehost.net.80
-
--h         this info...
--n         show this many of the top possible matches
--p         run with a prefetched file
--g         gather only (don't do comparison)
--c         show this many closest matches
-"""
+    print("hmap is a web server fingerprinter.\n"
+ "\n"
+ "hmap [-hpgn] {url | filename}\n"
+ "\n"
+ "e.g.\n"
+ "   hmap http://localhost:82\n"
+ "\n"
+ "   hmap -p www.somehost.net.80\n"
+ "\n"
+ "-h         this info...\n"
+ "-n         show this many of the top possible matches\n"
+ "-p         run with a prefetched file\n"
+ "-g         gather only (don't do comparison)\n"
+ "-c         show this many closest matches\n")
     sys.exit()
 
 ######################################################################
@@ -994,7 +992,7 @@ def testServer(ssl, server, port, matchCount, generateFP, threads):
         try:
             ### FIXME: This eval is awful, I should change it to pickle.
             ks = eval(ksf.read())
-        except Exception, e:
+        except Exception as e:
             raise BaseFrameworkException(
                 'The signature file "' + f + '" has an invalid syntax.')
         else:
@@ -1006,7 +1004,7 @@ def testServer(ssl, server, port, matchCount, generateFP, threads):
         for i in xrange(10):
             try:
                 fd = open('hmap-fingerprint-' + server + '-' + str(i), 'w')
-            except Exception, e:
+            except Exception as e:
                 raise BaseFrameworkException(
                     'Cannot open fingerprint file. Error:' + str(e))
             else:

@@ -32,7 +32,7 @@ from w3af.core.data.dc.utils.token import DataToken
 from w3af.core.data.dc.utils.filter_printable import filter_non_printable
 
 
-ERR_MSG = 'Unsupported init_val "%s", expected format is [(u"b", [u"2", u"3"])]'
+ERR_MSG = 'Unsupported init_val "%s", expected format is [("b", ["2", "3"])]'
 
 
 class KeyValueContainer(DataContainer, OrderedDict):
@@ -98,7 +98,7 @@ class KeyValueContainer(DataContainer, OrderedDict):
         """
         Return unicode representation
         """
-        return self._to_str_with_separators(u'=', u'&', errors='percent_encode')
+        return self._to_str_with_separators('=', '&', errors='percent_encode')
 
     def iter_setters(self):
         """
@@ -109,7 +109,7 @@ class KeyValueContainer(DataContainer, OrderedDict):
                     * The setter to modify the value
         """
         # pylint: disable=E1133
-        for k, v in self.iteritems():
+        for k, v in self.items():
             for idx, ele in enumerate(v):
 
                 token_path = (k, idx)
@@ -129,7 +129,7 @@ class KeyValueContainer(DataContainer, OrderedDict):
         for key, value_list in self.items():
             for value in value_list:
                 value = smart_unicode(value, encoding=UTF8, errors=errors)
-                to_app = u'%s%s%s' % (key, key_val_sep, value)
+                to_app = '%s%s%s' % (key, key_val_sep, value)
                 lst.append(to_app)
         # pylint: enable=E1133
 

@@ -39,7 +39,7 @@ __all__ = ['Pool']
 #
 
 import threading
-import Queue
+import queue
 import itertools
 import collections
 import time
@@ -129,7 +129,7 @@ def worker(inqueue, outqueue, initializer=None, initargs=(), maxtasks=None):
         job, i, func, args, kwds = task
         try:
             result = (True, func(*args, **kwds))
-        except Exception, e:
+        except Exception as e:
             result = (False, e)
 
         try:
@@ -161,14 +161,14 @@ def create_detailed_pickling_error(exception, instance):
 
     if hasattr(instance, '__dict__'):
         # Objects have dicts with all the attributes
-        for k, v in instance.__dict__.iteritems():
+        for k, v in instance.__dict__.items():
             if not can_pickle(v):
                 attribute = k
                 break
 
     elif isinstance(instance, dict):
         # Similar to the above but we don't have __dict__
-        for k, v in instance.iteritems():
+        for k, v in instance.items():
             if not can_pickle(v):
                 attribute = k
                 break

@@ -121,7 +121,7 @@ class pluginsTypeMenu(menu):
             try:
                 options = self._w3af.plugins.get_plugin_inst(
                     self._name, p).get_options()
-            except Exception, e:
+            except Exception as e:
                 om.out.error('Error while reading plugin options: "%s"' % e)
                 sys.exit(-8)
             else:
@@ -147,7 +147,7 @@ class pluginsTypeMenu(menu):
     def execute(self, tokens):
         if len(tokens) > 0:
             command, params = tokens[0], tokens[1:]
-            #print "command: " + command + "; " + str(self.get_commands())
+            #print("command: ") + command + "; " + str(self.get_commands())
             if command in self.get_commands():
                 return menu.execute(self, tokens)
             else:
@@ -223,7 +223,7 @@ class pluginsTypeMenu(menu):
         return suggest(self._plugins.keys(), part)
 
     def _list(self, params):
-        #print 'list : ' + str(params)
+        #print('list : ') + str(params)
         filter = len(params) > 0 and params[0] or 'all'
 
         all = self._plugins.keys()

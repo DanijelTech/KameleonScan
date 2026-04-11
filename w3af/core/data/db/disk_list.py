@@ -300,7 +300,7 @@ class DiskList(object):
         return r[0]
 
     def __unicode__(self):
-        return u'<DiskList [%s]>' % ', '.join([unicode(i) for i in self])
+        return '<DiskList [%s]>' % ', '.join([unicode(i) for i in self])
     
     __str__ = __unicode__
 

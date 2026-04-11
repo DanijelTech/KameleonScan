@@ -52,7 +52,7 @@ class APIUnitTest(unittest.TestCase):
         Since the API does not support concurrent scans we need to cleanup
         everything before starting a new scan/test.
         """
-        for scan_id, scan_info in SCANS.iteritems():
+        for scan_id, scan_info in SCANS.items():
             if scan_info is not None:
                 scan_info.w3af_core.stop()
                 scan_info.w3af_core.cleanup()

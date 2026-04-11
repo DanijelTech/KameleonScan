@@ -114,7 +114,7 @@ class FormIDMatcher(object):
             if not isinstance(attributes, dict):
                 raise ValueError(FORM_ID_FORMAT_ERROR)
 
-            for k, v in attributes.iteritems():
+            for k, v in attributes.items():
                 if not isinstance(k, basestring):
                     raise ValueError(FORM_ID_FORMAT_ERROR)
 

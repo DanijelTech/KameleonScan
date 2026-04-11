@@ -74,7 +74,7 @@ class BoneCollector(object):
     def start(self, tag, attrib):
         self.bones.append(tag)
 
-        for attr, value in attrib.iteritems():
+        for attr, value in attrib.items():
             args = (attr, round_N(len(value)))
             self.bones.append('%s%s' % args)
 
@@ -129,7 +129,7 @@ def get_xml_bones_iterparse(document, _round_N=round_N):
         if event == 'start':
             append(elem.tag)
 
-            for attr, value in elem.attrib.iteritems():
+            for attr, value in elem.attrib.items():
                 append('%s%s' % (attr, _round_N(len(value))))
 
             if elem.text is not None:

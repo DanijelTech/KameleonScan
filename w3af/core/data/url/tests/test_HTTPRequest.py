@@ -76,10 +76,10 @@ class TestHTTPRequest(unittest.TestCase):
         self.assertEqual(req.dump(), expected)
 
     def test_dump_case02(self):
-        expected = u'\r\n'.join([u'GET http://w3af.com/a/b/c.php HTTP/1.1',
-                                 u'Hola: Múndo',
-                                 u'',
-                                 u''])
+        expected = '\r\n'.join(['GET http://w3af.com/a/b/c.php HTTP/1.1',
+                                 'Hola: Múndo',
+                                 '',
+                                 ''])
         u = URL('http://w3af.com/a/b/c.php')
         headers = Headers([('Hola', 'Múndo')])
         req = HTTPRequest(u, headers=headers)
