@@ -9,11 +9,11 @@
 [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![codecov](https://codecov.io/gh/DanijelTech/KameleonScan/branch/main/graph/badge.svg)](https://codecov.io/gh/DanijelTech/KameleonScan)
 [![Security](https://img.shields.io/badge/security-bandit-orange.svg)](https://github.com/PyCQA/bandit)
-[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/w3af/w3af)
+[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/kameleonscan/kameleonscan)
 
 ## About
 
-[w3af](http://w3af.org/) is an open source web application security scanner which helps developers and penetration testers identify and exploit vulnerabilities in their web applications.
+KameleonScan is an open source web application security scanner which helps developers and penetration testers identify and exploit vulnerabilities in their web applications.
 
 The scanner is able to identify **200+ vulnerabilities**, including:
 - Cross-Site Scripting (XSS)
@@ -47,7 +47,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### Running w3af
+### Running KameleonScan
 
 ```bash
 # Command-line interface
@@ -64,10 +64,10 @@ pip install -r requirements.txt
 
 ```bash
 # Build the Docker image
-docker build -t w3af .
+docker build -t kameleonscan .
 
 # Run the container
-docker run -it w3af ./w3af_console
+docker run -it kameleonscan ./w3af_console
 ```
 
 ## Features
@@ -83,7 +83,7 @@ docker run -it w3af ./w3af_console
 ## Documentation
 
 For detailed documentation, visit:
-- [w3af Documentation](http://docs.w3af.org/en/latest/)
+- [KameleonScan Documentation](http://docs.kameleonscan.org/en/latest/)
 - [Installation Guide](https://github.com/DanijelTech/KameleonScan/wiki/Installation)
 - [User Guide](https://github.com/DanijelTech/KameleonScan/wiki/User-Guide)
 
@@ -133,7 +133,7 @@ This project is licensed under the GNU General Public License v2.0 - see the [LI
 
 ## Security
 
-For security vulnerabilities, please contact: info@w3af.org
+For security vulnerabilities, please contact: security@kameleonscan.org
 
 ## Support
 
@@ -144,5 +144,5 @@ For security vulnerabilities, please contact: info@w3af.org
 ---
 
 <p align="center">
-  Made with ❤️ by the w3af team
+  Made with ❤️ by the KameleonScan team
 </p>
